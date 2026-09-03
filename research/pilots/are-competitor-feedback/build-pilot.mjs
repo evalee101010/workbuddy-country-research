@@ -290,6 +290,31 @@ const rawFeedback = [
   {feedback_id:"FB-ARE-20260000-000020",product:"Manus",product_scope:"Editorial review",source_channel:"Editorial/SEO",source_name:"MenaElite",source_url:"https://menaelite.com/manus-ai-agent-review-uae-2026/",source_item_hint:"Manus AI Agent Review UAE 2026",author_alias:"editorial",published_at:"2026",published_at_raw:"2026",date_confidence:"Year only",captured_at:capturedAt,query_language:"en",content_language:"en",geo_claim:"UAE-targeted article",country_iso3_candidate:"ARE",geo_evidence:"UAE in article targeting, not a user location",country_confidence:"Unknown",rating:null,author_context:"publisher/editor",task_summary:"product review article",outcome_summary:"not coded",friction_summary:"not coded",pricing_signal:"",switching_signal:"",sentiment:"Unknown",capture_mode:"Search discovery only",evidence_excerpt:"[转述] 面向 UAE 的评测文章，但不是用户原始反馈",inclusion_status:"Excluded",exclusion_reason:"Editorial/SEO, not user-generated feedback",duplicate_group:"",researcher_note:"只用于发现当地词与候选假设"},
 ];
 
+const originalEvidence = {
+  "FB-ARE-20260602-000001": { original_text: "Llevo gastando más de 200 dólares en créditos", original_text_translation_cn: "我已经在积分上花了超过 200 美元。" },
+  "FB-ARE-20260815-000002": { original_text: "prepare presentations for top management on a very short time frame", original_text_translation_cn: "在很短时间内为高层准备演示材料。" },
+  "FB-ARE-20260707-000003": { original_text: "building presentations, creating spreadsheets, managing CRM dashboards", original_text_translation_cn: "制作演示、创建表格并管理 CRM 仪表盘。" },
+  "FB-ARE-20260419-000004": { original_text: "generate a simple ZIP file containing my designs", original_text_translation_cn: "生成一个包含我的设计文件的简单 ZIP。" },
+  "FB-ARE-20260804-000005": { original_text: "investigate and refund appropriately", original_text_translation_cn: "进行调查并适当退款。" },
+  "FB-ARE-20260722-000006": { original_text: "I canceled my subscription in May 2026 and they still charged me", original_text_translation_cn: "我在 2026 年 5 月取消订阅，但他们仍继续扣费。" },
+  "FB-ARE-20250912-000008": { original_text: "I live in Dubai", original_text_translation_cn: "我住在迪拜。" },
+  "FB-ARE-20260404-000010": { original_text: "one year subscription", original_text_translation_cn: "一年期订阅。" },
+  "FB-ARE-20260220-000011": { original_text: "very difficult to use", original_text_translation_cn: "非常难用。" },
+  "FB-ARE-20260417-000012": { original_text: "unable to use it", original_text_translation_cn: "无法继续使用。" },
+  "FB-ARE-20260416-000013": { original_text: "Arabic language mistakes", original_text_translation_cn: "阿拉伯语错误。" },
+  "FB-ARE-20250516-000014": { original_text: "it kept throwing errors", original_text_translation_cn: "它一直报错。" },
+  "FB-ARE-20260419-000015": { original_text: "A very simple task burned 510 credits", original_text_translation_cn: "一个非常简单的任务消耗了 510 积分。" },
+  "FB-ARE-20260000-000016": { original_text: "Afghanistan", original_text_translation_cn: "阿富汗。" },
+  "FB-GLB-20260000-000017": { original_text: "قضيت شهرين مع Claude Cowork", original_text_translation_cn: "我使用 Claude Cowork 两个月。" },
+  "DS-ARE-20260520-000019": { original_text: "Has anyone here tested GEO / AI search visibility?", original_text_translation_cn: "这里有人测试过 GEO / AI 搜索可见性吗？" },
+  "FB-ARE-20260000-000020": { original_text: "Manus AI Agent Review UAE 2026", original_text_translation_cn: "2026 年 UAE Manus AI Agent 评测。" },
+};
+
+for (const row of rawFeedback) {
+  row.original_text = originalEvidence[row.feedback_id]?.original_text ?? "";
+  row.original_text_translation_cn = originalEvidence[row.feedback_id]?.original_text_translation_cn ?? "";
+}
+
 const codedFeedback = [
   {feedback_id:"FB-ARE-20260602-000001",product:"Manus",product_tier:"A1 Direct",source_type:"Review platform",source_name:"Trustpilot",source_url:"https://es.trustpilot.com/review/manus.im",published_at:"2026-06-02",captured_at:capturedAt,country_or_region:"United Arab Emirates",country_iso3:"ARE",country_confidence:"High",geo_evidence:"Profile displays AE; not independently verified",query_language:"en/es",content_language:"es",user_role:"App builder / entrepreneur (inferred)",company_size:"Unknown",job_to_be_done:"Build and continue developing an application",trigger:"Existing project already advanced",input_or_connected_tools:"Existing Manus project; credits",expected_output:"Continue building without losing prior work",actual_result:"Project progressed, but refunds did not restore credits and plan costs escalated",success_status:"Partial",failure_stage:"Billing / credit recovery",manual_interventions:"Repeated refund claims",time_or_latency:"Switching would require rebuilding",setup_difficulty:"Unknown",reliability:"Product capability positive; commercial system unreliable",control_and_approval:"Credit ledger/refund status lacks control",privacy_and_trust:"Trust damaged by unresolved credits",pricing_or_usage_limit:">US$200 spent; higher plan needed",current_alternative:"Other options, unnamed",retention_churn_or_switching_signal:"Locked in by prior time/money despite dissatisfaction",sentiment:"Negative",evidence_excerpt:"[转述] 应用已做得较深，但积分与退款问题造成锁定",inclusion_status:"Included",scope_class:"Core",date_confidence:"Exact",source_bias_note:"Self-selected review; support/billing complaint bias",researcher_note:"Strong lock-in and cost-predictability signal"},
   {feedback_id:"FB-ARE-20260815-000002",product:"Genspark",product_tier:"A1 Direct",source_type:"Review platform",source_name:"Trustpilot",source_url:"https://ca.trustpilot.com/review/genspark.ai?page=3",published_at:"2026-08-15",captured_at:capturedAt,country_or_region:"United Arab Emirates",country_iso3:"ARE",country_confidence:"High",geo_evidence:"Profile displays AE; not independently verified",query_language:"en",content_language:"en",user_role:"Knowledge worker preparing management materials",company_size:"Unknown",job_to_be_done:"Prepare top-management presentations under short deadlines",trigger:"Very short delivery window",input_or_connected_tools:"Templates; Super Agent; content modifications",expected_output:"Management-ready presentation with relevant insights",actual_result:"Presentation work became easier and less stressful",success_status:"Success",failure_stage:"",manual_interventions:"User still directs templates/content",time_or_latency:"Short timeframe; qualitative time saving",setup_difficulty:"Low/unclear",reliability:"Positive in stated workflow",control_and_approval:"User can modify content",privacy_and_trust:"Not mentioned",pricing_or_usage_limit:"Not mentioned",current_alternative:"Manual presentation preparation",retention_churn_or_switching_signal:"Positive continued-use signal",sentiment:"Positive",evidence_excerpt:"[转述] Super Agent 帮助在短时限内完成高层演示",inclusion_status:"Included",scope_class:"Core",date_confidence:"Exact",source_bias_note:"Self-selected positive review",researcher_note:"Strong JTBD and outcome coverage"},
@@ -334,7 +359,7 @@ const codebook = [
   {field:"access",value:"Conditional",definition:"需要凭证、许可或条款评估",decision_rule:"不得因公开可见就默认批量抓取"},
 ];
 
-const rawHeaders = ["feedback_id","product","product_scope","source_channel","source_name","source_url","source_item_hint","author_alias","published_at","published_at_raw","date_confidence","captured_at","query_language","content_language","geo_claim","country_iso3_candidate","geo_evidence","country_confidence","rating","author_context","task_summary","outcome_summary","friction_summary","pricing_signal","switching_signal","sentiment","capture_mode","evidence_excerpt","inclusion_status","exclusion_reason","duplicate_group","researcher_note"];
+const rawHeaders = ["feedback_id","product","product_scope","source_channel","source_name","source_url","source_item_hint","author_alias","published_at","published_at_raw","date_confidence","captured_at","query_language","content_language","geo_claim","country_iso3_candidate","geo_evidence","country_confidence","rating","author_context","task_summary","outcome_summary","friction_summary","pricing_signal","switching_signal","sentiment","capture_mode","original_text","original_text_translation_cn","evidence_excerpt","inclusion_status","exclusion_reason","duplicate_group","researcher_note"];
 const codedHeaders = ["feedback_id","product","product_tier","source_type","source_name","source_url","published_at","captured_at","country_or_region","country_iso3","country_confidence","geo_evidence","query_language","content_language","user_role","company_size","job_to_be_done","trigger","input_or_connected_tools","expected_output","actual_result","success_status","failure_stage","manual_interventions","time_or_latency","setup_difficulty","reliability","control_and_approval","privacy_and_trust","pricing_or_usage_limit","current_alternative","retention_churn_or_switching_signal","sentiment","evidence_excerpt","inclusion_status","scope_class","date_confidence","source_bias_note","researcher_note"];
 
 function rowsFromObjects(items, headers) {
@@ -462,14 +487,14 @@ languageSheet.getRange("A10").values = [["Middle East guardrail：Saudi / UAE / 
 languageSheet.getRange("A10:L10").format = { fill: palette.redLight, font: { color: palette.red, bold: true }, wrapText: true, rowHeight: 40 };
 
 // Raw Feedback.
-styleTitle(rawSheet, rawSheet.getRange("A1:AF1"), "Raw Feedback｜20 条发现记录（含排除与分流）");
-rawSheet.getRange("A2:AF2").merge();
-rawSheet.getRange("A2").values = [["保留原始发现层，不把语言或 UAE storefront 自动转换成 UAE 用户；evidence_excerpt 均为研究员短转述，原链接用于复核。"]];
-rawSheet.getRange("A2:AF2").format = { fill: palette.sand, font: { color: palette.navy }, wrapText: true, rowHeight: 30 };
-rawSheet.getRange(`A4:AF${4 + rawFeedback.length}`).values = [rawHeaders, ...rowsFromObjects(rawFeedback, rawHeaders)];
+styleTitle(rawSheet, rawSheet.getRange("A1:AH1"), "Raw Feedback｜20 条发现记录（含排除与分流）");
+rawSheet.getRange("A2:AH2").merge();
+rawSheet.getRange("A2").values = [["original_text 保存可核验的最短原文证据片段，original_text_translation_cn 为中文翻译；空白表示未可靠取得，不用研究员转述冒充原话。"]];
+rawSheet.getRange("A2:AH2").format = { fill: palette.sand, font: { color: palette.navy }, wrapText: true, rowHeight: 30 };
+rawSheet.getRange(`A4:AH${4 + rawFeedback.length}`).values = [rawHeaders, ...rowsFromObjects(rawFeedback, rawHeaders)];
 styleTable(rawSheet, 4, rawHeaders, rawFeedback.length, "RawFeedbackTable");
-setWidths(rawSheet, {A:23,B:18,C:21,D:18,E:22,F:46,G:42,H:20,I:13,J:20,K:14,L:13,M:12,N:13,O:24,P:13,Q:38,R:14,S:9,T:28,U:35,V:38,W:38,X:34,Y:34,Z:12,AA:30,AB:42,AC:23,AD:32,AE:16,AF:38});
-rawSheet.getRange(`A5:AF${4 + rawFeedback.length}`).format.rowHeight = 74;
+setWidths(rawSheet, {A:23,B:18,C:21,D:18,E:22,F:46,G:42,H:20,I:13,J:20,K:14,L:13,M:12,N:13,O:24,P:13,Q:38,R:14,S:9,T:28,U:35,V:38,W:38,X:34,Y:34,Z:12,AA:30,AB:42,AC:42,AD:42,AE:23,AF:32,AG:16,AH:38});
+rawSheet.getRange(`A5:AH${4 + rawFeedback.length}`).format.rowHeight = 82;
 
 // Coded Feedback.
 styleTitle(codedSheet, codedSheet.getRange("A1:AM1"), "Coded Feedback｜13 条可编码记录");
@@ -599,8 +624,9 @@ await fs.writeFile(path.join(pilotDir, "02-source-feasibility.csv"), toCsv(sourc
 
 const summaryInspect = await workbook.inspect({ kind: "table", range: "Pilot Summary!A1:H23", include: "values,formulas", tableMaxRows: 25, tableMaxCols: 10, maxChars: 7000 });
 const feasibilityInspect = await workbook.inspect({ kind: "table", range: "Source Feasibility!A1:N16", include: "values,formulas", tableMaxRows: 18, tableMaxCols: 14, maxChars: 9000 });
+const originalTextInspect = await workbook.inspect({ kind: "table", range: "Raw Feedback!AA4:AH10", include: "values,formulas", tableMaxRows: 8, tableMaxCols: 8, maxChars: 7000 });
 const errorInspect = await workbook.inspect({ kind: "match", searchTerm: "#REF!|#DIV/0!|#VALUE!|#NAME\\?|#N/A", options: { useRegex: true, maxResults: 300 }, summary: "final formula error scan", maxChars: 5000 });
-console.log(JSON.stringify({ summaryInspect: summaryInspect.ndjson, feasibilityInspect: feasibilityInspect.ndjson, errorInspect: errorInspect.ndjson }));
+console.log(JSON.stringify({ summaryInspect: summaryInspect.ndjson, feasibilityInspect: feasibilityInspect.ndjson, originalTextInspect: originalTextInspect.ndjson, errorInspect: errorInspect.ndjson }));
 
 for (const sheetName of ["Pilot Summary","Country & Language","Source Feasibility","Query Log","Raw Feedback","Coded Feedback","Coverage Matrix","Codebook"]) {
   const preview = await workbook.render({ sheetName, autoCrop: "all", scale: 1, format: "png" });

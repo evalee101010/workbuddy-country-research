@@ -45,7 +45,7 @@
 1. `07-pilot-findings.md`：先看渠道结论、字段覆盖与正式扩样建议。
 2. `02-source-feasibility.csv`：每个渠道的公开可访问性、机器访问条件、权利边界和推荐用途。
 3. `03-query-log.csv`：复现检索词、国家锚点、窗口、候选数、编码数与漏检/串国问题。
-4. `04-raw-feedback.csv`：20 条发现层记录，保留排除与分流原因。
+4. `04-raw-feedback.csv`：20 条发现层记录，保留排除与分流原因；`original_text` 为可核验的最短原文证据片段，`original_text_translation_cn` 为中文翻译。
 5. `05-coded-feedback.csv`：13 条结构化反馈，覆盖任务、链路、结果、失败、成本、信任和迁移。
 6. `06-dimension-coverage.csv`：各渠道能拿到哪些字段，按 0–3 评分。
 7. `01-country-language-scope.csv`：本国语种、关键词与国家锚点。
@@ -59,7 +59,8 @@
 - Trustpilot 的 `AE` 是平台展示的资料国家，不代表本研究独立验证了用户身份。
 - Apple UAE storefront 只证明页面入口，不证明评论作者的常住地。试跑中甚至发现正文明确出现 Afghanistan 的评论，说明 storefront 不能作为国家强证据。
 - Reddit 仅做搜索引擎发现与人工小样本阅读；没有把“公开可见”理解成可以未授权批量抓取。规模化前按 [Reddit Data API Terms](https://redditinc.com/policies/data-api-terms) 重新评估用途与许可。
-- 表中的 `evidence_excerpt` 是研究员短转述，原始 URL 才是复核入口。
+- `original_text` 保存可核验的最短原文证据片段，`original_text_translation_cn` 保存中文翻译；无法可靠取得时留空。
+- `evidence_excerpt` 仍是研究员短转述，原始 URL 才是完整复核入口。
 
 ## 6. 正式扩样前的门槛
 
@@ -68,4 +69,3 @@
 3. 为每个 `product × channel × query_language` 设置最低检索页数和停止条件，而不是要求同样条数。
 4. 先跑完 English/Arabic 的渠道产出，再决定 Hindi/Urdu/Malayalam 是否值得设配额。
 5. 任何需要凭证或批量访问的平台，先完成条款、API 和授权评估。
-

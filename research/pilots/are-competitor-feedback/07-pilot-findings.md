@@ -49,7 +49,7 @@
 
 试跑证明需要把两层数据分开：
 
-1. **Raw discovery 层**：保留被排除、错国、错语种、编辑文章以及应转入 05 的需求信号，否则无法审计检索偏差。
+1. **Raw discovery 层**：保留被排除、错国、错语种、编辑文章以及应转入 05 的需求信号，并分别保存最短原文证据片段与中文翻译，否则无法审计检索偏差。
 2. **Coded evidence 层**：只有通过国家证据与内容门槛的记录，才展开任务、链路、结果、成本、信任和迁移字段。
 
 因此此前的 `04-competitor-feedback-template.csv` 更像“最终编码表骨架”，不是完整采集流程；正式执行应配套国家—语言表、来源可行性表、query log、raw feedback、coded feedback、coverage matrix 和 codebook。
@@ -69,4 +69,3 @@
 不立即扩到整个中东。先用同一套结构把 UAE 扩到 30–50 条 High geo 候选，并做双人编码校准；如果 Trustpilot 的真实任务密度在新增页面明显下降，再追加 G2/Capterra 本地筛选验证和 YouTube API 小样本。阿语与英语分别保留查询漏斗，Hindi/Urdu 只有在能稳定命中 UAE 公开工作反馈时才设正式配额。
 
 完成 UAE 方法校准后，再复制到 Saudi Arabia。两国只共享字段与编码规则，不共享关键词、语言配额或国家归属判断。
-
