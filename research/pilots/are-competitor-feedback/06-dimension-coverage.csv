@@ -1,0 +1,9 @@
+channel,sample_basis,volume,date,rating,language,user_country,user_role,company_size,jtbd,workflow_steps,connected_tools,expected_output,actual_result,failure_stage,manual_intervention,time_latency,pricing_limits,support,privacy_trust,switching_retention,engagement,summary
+Trustpilot,6 coded ARE rows,2,3,3,3,3,2,1,2,2,1,2,3,2,2,2,3,3,2,3,0,最适合国家标签+商业摩擦+迁移；任务深度不稳定
+Apple App Store,6 coded hypothesis rows,3,2,3,3,1,0,0,2,1,1,2,3,2,1,1,3,2,2,3,0,容易拿量和主题；国家归属最危险，必须降置信度
+Reddit,1 coded + 2 routed/excluded,1,3,0,3,2,1,1,3,3,3,3,3,2,2,2,2,1,2,3,3,命中率低但上下文最完整；需逐条确认地理并遵守 API 条款
+Google Play,1 excluded Arabic row,3,3,3,3,1,0,0,2,1,1,1,2,2,1,1,3,2,1,2,1,多语言主题发现可用；缺少可靠国家字段
+YouTube,discovery only; API not run,3,3,1,3,1,1,0,2,2,2,2,2,1,1,2,1,1,1,2,3,适合长评和评论规模；作者/评论者国家弱，需 API key
+GitHub,API surface tested; 0 target rows,2,3,0,3,0,0,0,2,3,3,3,3,3,3,2,0,2,2,1,3,技术故障最强，但本轮闭源竞品缺少官方 issues，地理也弱
+Product Hunt,0 ARE rows,2,3,1,3,1,2,1,2,1,1,2,2,1,1,1,2,1,1,2,3,适合新品/定位，国家归因与长期使用证据弱
+G2/Capterra,0 ARE rows; candidate,2,3,3,3,2,3,3,3,2,2,2,3,2,2,2,2,2,2,2,1,理论上最适合 B2B 画像，但需先确认竞品覆盖、筛选和授权

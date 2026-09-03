@@ -1,0 +1,15 @@
+field,value,definition,decision_rule
+country_confidence,High,正文或个人资料明确写出国家/城市；平台资料未独立验证时需在 geo_evidence 说明,可进入国家核心样本，但仍保留来源偏差
+country_confidence,Medium,本地 storefront/community 加另一条弱证据（如城市/币种/昵称）,只用于假设和定性主题，不做强国家结论
+country_confidence,Low,只有 storefront、语言或 regionCode 等单一弱信号,不得计入国家高置信样本；只能进入假设池
+country_confidence,Unknown,无法归属国家，或只有阿语/英语等跨国信号,放 Global/Unknown 或排除
+scope_class,Core,直接 agent/workspace/browser-agent 任务，或其关键执行/成本链路,进入 Cowork 反馈主题分析
+scope_class,Adjacent,一般 AI 产品、账单、客服等与 Cowork 相邻但非核心任务,单独分析，不与核心成功率合并
+success_status,Success,端到端完成且结果可直接使用,必须能从正文判断实际结果
+success_status,Partial,只完成部分步骤，或能力有效但需明显补救/受限,记录失败/限制阶段
+success_status,Failed,核心目标未完成、结果不可用或任务中断,同时编码 failure_stage 与人工接管
+inclusion_status,Included,国家证据与反馈内容都满足最低门槛,至少含具体产品、可识别任务、实际结果/摩擦
+inclusion_status,Hypothesis only,内容可编码，但地理归属只有 Low/Medium,保留主题，不做 UAE 总体推断
+routing,04 competitor feedback,具体竞品+工作任务+实际结果/摩擦,进入反馈库
+routing,05 country demand,表达工作需求/痛点，但不一定使用具体竞品,转入国家公开需求库
+access,Conditional,需要凭证、许可或条款评估,不得因公开可见就默认批量抓取

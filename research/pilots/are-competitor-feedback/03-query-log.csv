@@ -1,0 +1,21 @@
+query_id,channel,product,query_language,exact_query,country_anchor,time_window,pages_checked,candidates_seen,coded_count,outcome,leakage,note
+Q-ARE-001,Trustpilot,Genspark,en,"site:trustpilot.com/review/genspark.ai ""AE"" Genspark",AE profile tag,2025-09-01 to 2026-09-03,"pages 3, 4, 7, 9",4,4,Yield,Page order changes over time,按作者名+日期复核；任务、积分和迁移字段丰富
+Q-ARE-002,Trustpilot,Manus,en/es,"site:trustpilot.com/review/manus.im ""David Erreyes""",AE profile tag,2025-09-01 to 2026-09-03,brand page,1,1,Yield,西语站点界面不代表评论语种/国家,获取到应用构建、积分退款和锁定效应
+Q-ARE-003,Trustpilot,Perplexity,en,"site:trustpilot.com/review/www.perplexity.ai ""AE"" subscription charged",AE profile tag,2025-09-01 to 2026-09-03,page 3,1,1,Adjacent yield,属于产品账单而非 Comet 工作任务,保留为商业系统/售后边界样本
+Q-ARE-004,Trustpilot,ChatGPT,en,"site:trustpilot.com/review/chatgpt.com ""AE"" simple task",AE profile tag,2025-09-01 to 2026-09-03,page 5,1,0,Exclude,任务太模糊且非 Cowork,证明有国家标签也仍需任务门槛
+Q-ARE-005,Apple App Store,Genspark,en/ar,apps.apple.com/ae Genspark see-all=reviews,ARE storefront,page current at capture,1 storefront page,8,4,Hypothesis yield,storefront 不证明作者在 UAE,价格/积分、阿语质量、停用和替代信号明显
+Q-ARE-006,Apple App Store,Manus,en,apps.apple.com/ae Manus see-all=reviews,ARE storefront,page current at capture,1 storefront page,9,2,Hypothesis yield,storefront 不证明作者在 UAE,积分消耗、错误、扣费和客服字段丰富
+Q-ARE-007,Apple App Store,ChatGPT,en,apps.apple.com/ae ChatGPT see-all=reviews,ARE storefront,page current at capture,1 storefront page,6,0,Geo counterexample,正文明确提到 Afghanistan,UAE storefront 只能给 Low geo confidence
+Q-ARE-008,Reddit,Perplexity Comet,en,"site:reddit.com/r/perplexity_ai ""I live in Dubai"" Comet",正文自述 Dubai,2025-09-01 to 2026-09-03,1 thread,1,1,High-value yield,无,工作链路、环境上下文、替代和留存都可编码
+Q-ARE-009,Reddit,Perplexity / Claude,en,site:reddit.com/r/dubai Perplexity Claude discount,r/dubai,all time,1 thread,1,0,Route to demand / out of window,子版块不是常住地；早于主窗口,可作为价格需求，不进入本轮竞品反馈
+Q-ARE-010,Reddit,General AI,en,site:reddit.com/r/UAE AI search visibility SME,r/UAE + 正文 UAE SME,2025-09-01 to 2026-09-03,1 thread,1,0,Route to 05 demand,不是竞品使用反馈,保留为公开用户需求信号入口
+Q-ARE-011,Search engine index,Genspark / Manus,ar,الإمارات تجربة Genspark Manus مشاكل اشتراك رصيد,الإمارات,2025-09-01 to 2026-09-03,first results page,,0,Low precision,Saudi/Egypt/Iraq/global Arabic results,阿语必须和国家证据二次交叉，不能直接归 UAE
+Q-ARE-012,YouTube,Claude Cowork,ar,دبي Claude Cowork تجربة مراجعة,دبي,2025-09-01 to 2026-09-03,search results,1,0,Discovery only,视频为泛阿语内容，无 UAE 用户证据,作者/评论者国家弱；需 API key 后再测评论
+Q-ARE-013,Search engine index,Genspark,hi,UAE Genspark review Hindi दुबई,UAE / दुबई,2025-09-01 to 2026-09-03,first results page,0,0,No yield,无,保留为探索语种，不设首轮配额
+Q-ARE-014,Search engine index,Manus,ur,UAE Manus AI review Urdu دبئی,UAE / دبئی,2025-09-01 to 2026-09-03,first results page,0,0,No yield,无,保留为探索语种，不设首轮配额
+Q-ARE-015,Google Play,Genspark,ar,play.google.com Genspark hl=ar reviews,none,page current at capture,1 product page,1,0,Global-Arabic only,阿语界面/评论无 UAE 地理证据,保留到 Global-Arabic 主题池，不进入 ARE
+Q-ARE-016,YouTube,Multiple,en/ar,YouTube Data API search.list + commentThreads.list,regionCode=AE (discovery only),planned,not run,,0,Blocked by key,regionCode 不等于作者国家,需要 API key；先小样本测试评论命中率
+Q-ARE-017,Product Hunt,Genspark / Manus,en,Genspark UAE Product Hunt comments,UAE keyword,all time,search results,0,0,No country yield,早期采用者评论普遍无国家,适合全球定位/竞品发现，不适合本轮国家归因
+Q-ARE-018,GitHub,Genspark / Manus / Comet,en,Genspark Manus Comet UAE issue,UAE keyword,all time,search results,0,0,No target surface,同名项目与非官方仓库,闭源产品缺少稳定官方 issue 面
+Q-ARE-019,G2/Capterra,Genspark / Manus,en,Genspark Manus UAE review G2 Capterra,UAE keyword,all time,search results,0,0,No stable yield,产品覆盖不足/国家筛选不明显,二轮再做授权和页面能力验证
+Q-ARE-020,Editorial/SEO,Manus,en,Manus AI agent review UAE 2026,UAE in title,2026,1 article,1,0,Exclude as feedback,编辑/SEO 内容不是用户反馈,只用于发现本地词和待验证假设
