@@ -1,0 +1,2 @@
+signal_id,source_id,source_type,source_name,source_url,item_url,title,published_at,captured_at,search_or_topic,query_language,country_iso3,country_or_region,country_confidence,language,user_role,company_size,job_to_be_done,current_solution,pain_point,desired_outcome,trigger,tool_or_product,mentioned_products,intent_stage,payment_signal,switching_signal,engagement_metrics,sentiment,evidence_excerpt,normalized_theme,duplicate_group,inclusion_status,researcher_note
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
