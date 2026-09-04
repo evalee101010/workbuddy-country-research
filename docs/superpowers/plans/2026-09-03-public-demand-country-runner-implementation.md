@@ -25,13 +25,13 @@ Runner 负责目录、配置、查询包、结构校验、稳定 ID、去重提�
 
 ### 2.1 技术选择
 
-- Python 3.11+：CLI、CSV、状态机、校验、Markdown 渲染。
+- Python 3.9+：CLI、CSV、状态机、校验、Markdown 渲染。
 - PyYAML 6.x：读取 Country Config 和全局规则。
-- openpyxl 3.1.x：生成 Excel 交付物。
+- Codex 工作区提供的 Node.js 与 `@oai/artifact-tool`：生成、检查、渲染并导出 Excel 交付物。
 - `unittest`：不增加测试框架依赖。
 - 公开采集：人工页面复核、允许的结构化导出和后续可选适配器；第一版不开发通用爬虫。
 
-`requirements.txt` 固定兼容范围，不依赖 Codex 私有模块。README 同时提供普通 Python 虚拟环境和 Codex 工作区依赖两种运行说明。
+`requirements.txt` 只固定 PyYAML 的兼容范围。XLSX 构建器使用 `load_workspace_dependencies` 返回的 Node.js 和 `@oai/artifact-tool` 路径；运行时在可写目录创建 `node_modules` 软链接，不修改依赖目录，也不把机器路径提交进仓库。README 说明：CSV/Markdown 流程可在普通 Python 环境运行；XLSX 构建与渲染验证需要 Codex 工作区依赖。
 
 ### 2.2 目标目录
 
@@ -54,8 +54,10 @@ country_runner/
 │   ├── validation.py
 │   ├── coverage.py
 │   ├── report_md.py
-│   ├── report_xlsx.py
+│   ├── report_xlsx.py              # 调度 JS 构建器、处理错误与冻结
 │   └── migrate_uae.py
+├── xlsx/
+│   └── build_country_workbook.mjs  # 唯一工作簿创作脚本
 ├── config/
 │   ├── global/
 │   │   ├── product-catalog.yml
@@ -121,6 +123,7 @@ research/runs/                      # 运行时生成；不预填正式研究结
 5. 没有 API 凭证、登录态或付费权限时，匿名路径必须完整可运行。
 6. 自动化不能生成研究判断；它只校验人类可审计的字段和规则。
 7. 冻结数据不可原地改写。任何更新创建新 run 或新版本。
+8. 工作簿只能由 `@oai/artifact-tool` 创作；不得回退到 openpyxl、xlsxwriter 或其他替代库。
 
 全量测试命令：
 
@@ -476,6 +479,7 @@ feat(country-runner): enforce evidence and audience quality gates
 
 - `country_runner/country_runner/report_md.py`
 - `country_runner/country_runner/report_xlsx.py`
+- `country_runner/xlsx/build_country_workbook.mjs`
 - `country_runner/country_runner/cli.py`
 - `country_runner/tests/test_reports.py`
 
@@ -485,11 +489,12 @@ feat(country-runner): enforce evidence and audience quality gates
 2. 每个标题结论列出 evidence ID，并能回到 content ID、原文和 URL。
 3. 报告分开主流、进阶和技术附录，不把 GitHub 主题写成大众需求。
 4. KOL 表保留各平台原始互动，不跨平台求和；点击未知保持空值。
-5. XLSX 包含 Summary、Source Plan、Raw Discovery、A、B、C、Coverage、Audit、Warnings、Citation Index 工作表。
+5. XLSX 由唯一 `.mjs` 构建器生成，包含 Summary、Source Plan、Raw Discovery、A、B、C、Coverage、Audit、Warnings、Citation Index 工作表。
 6. 阿拉伯语、日语、葡萄牙语和中文在 XLSX 中不乱码；长原文自动换行，URL 可点击，冻结表头。
 7. Gate A 未批准、Gate B 为 BLOCK、审核者未签字时 build 失败。
 8. build 使用临时文件原子替换未冻结派生物；冻结后重复 build 拒绝改写。
 9. freeze log 写入输入哈希、输出哈希、构建时间、审核者和 WARN 清单。
+10. 构建后用 artifact-tool inspect 检查关键范围和公式错误，并渲染所有工作表做视觉验证；严重裁切、空白页或乱码必须修复。
 
 **验证**
 

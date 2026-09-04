@@ -1,0 +1,47 @@
+version: 1
+identity:
+  iso2: SG
+  iso3: SGP
+  name_en: Singapore
+  name_cn: 新加坡
+  currency: SGD
+  timezones: [Asia/Singapore]
+languages:
+  core: [en]
+  exploratory: [zh, ms, ta]
+  migration_corridor: []
+geography:
+  country_anchors: [Singapore, SG, 新加坡, Singapura, SGD]
+  allow_unknown_admin1: true
+  admin1: []
+audiences:
+  mainstream_roles: [job_seekers, office_workers, sales_marketing, operations_admin_hr, freelancers_creators, small_business_owners]
+  advanced_roles: [no_code_automation_users, business_ai_power_users]
+  technical_supplement: [developers, technical_founders]
+task_families:
+  - {id: career_jobs, terms: {en: [job search, CV, interview, portfolio], zh: [找工作, 简历, 面试]}}
+  - {id: office_productivity, terms: {en: [email, presentation, spreadsheet, documents, research], zh: [邮件, 演示文稿, 表格, 文档]}}
+  - {id: sales_marketing, terms: {en: [sales, marketing, content, lead generation], zh: [销售, 营销, 内容, 获客]}}
+  - {id: operations_admin, terms: {en: [operations, administration, HR, reporting], zh: [运营, 行政, 人力资源, 报告]}}
+  - {id: small_business, terms: {en: [SME, small business, freelancer, customer service], zh: [中小企业, 自由职业, 客户服务]}}
+products:
+  direct: [Claude Cowork, ChatGPT agent, Manus, Genspark, Perplexity Comet, Work Buddy]
+  adjacent: [Microsoft 365 Copilot, Google Workspace Gemini, Notion AI, Zapier, Make]
+channels:
+  - {name: HardwareZone Forums, family: local_forum, status: Candidate, scope_default: country_candidate, candidate_streams: [A, B], access_mode: public_manual, audience_bias: tech_lifestyle_forum_users, url: "https://forums.hardwarezone.com.sg/", seed_reason: "Singapore-local forum candidate; software/work signal yield must be piloted."}
+  - {name: Singapore Reddit communities, family: forum_social, status: Candidate, scope_default: country_candidate, candidate_streams: [A, B], access_mode: public_manual_conditional, audience_bias: reddit_users_and_self_selection, url: "https://www.reddit.com/", seed_reason: "Candidate for local career, SME and productivity narratives with explicit Singapore context."}
+  - {name: LinkedIn public posts, family: professional_social, status: Candidate, scope_default: country_candidate, candidate_streams: [B, C], access_mode: public_manual_partial, audience_bias: professional_self_presentation, url: "https://www.linkedin.com/", seed_reason: "Candidate for regional-HQ and local workplace context; distinguish Singapore from SEA claims."}
+  - {name: YouTube TikTok and Instagram, family: creator_social, status: Candidate, scope_default: country_candidate, candidate_streams: [B, C], access_mode: public_manual_partial, audience_bias: creator_and_algorithmic, url: "https://www.youtube.com/", seed_reason: "Candidate for mainstream productivity, career and SME content."}
+  - {name: Public Telegram channels, family: messaging_channel, status: Candidate, scope_default: country_candidate, candidate_streams: [B, C], access_mode: public_manual_partial, audience_bias: channel_subscribers, url: "https://telegram.org/", seed_reason: "Candidate where channels are genuinely public; private groups remain consent-required."}
+  - {name: Xiaohongshu Singapore content, family: multilingual_social, status: Candidate, scope_default: migration_corridor, candidate_streams: [B, C], access_mode: public_manual_partial, audience_bias: chinese_speaking_users, url: "https://www.xiaohongshu.com/", seed_reason: "Test whether content is resident, migrant or travel-oriented before assigning country scope."}
+  - {name: GitHub, family: technical_community, status: Candidate, scope_default: global_technical, candidate_streams: [A, B], access_mode: public_api_or_manual, audience_bias: Developer, url: "https://github.com/", seed_reason: "Technical supplement only; Singapore geo requires explicit evidence."}
+access:
+  anonymous_public_path: [search_engine_discovery, public_page_manual_review, public_metrics_capture]
+  auth_optional: [YouTube Data API, Reddit Data API, platform login]
+  consent_required: [private Telegram, WhatsApp, Slack, Discord or professional groups]
+  prohibited: [silent scraping of private groups, bypassing login or rate limits]
+research: {window_start: 2025-09-01, window_end: 2026-09-30, pilot_results_per_channel: 20, saturation_batches: 2, review_sample_rate: 0.10, required_mainstream_roles: 3, required_task_families: 4, required_source_families: 2}
+regional_mappings:
+  regions: [Southeast Asia, ASEAN]
+  language_zones: [English-speaking Southeast Asia, Chinese-speaking Southeast Asia]
+  migration_corridors: [China-to-Singapore, India-to-Singapore]

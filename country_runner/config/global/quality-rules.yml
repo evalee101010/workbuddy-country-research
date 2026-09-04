@@ -1,0 +1,26 @@
+version: 1
+states: [initialized, discovery_ready, source_plan_pending, source_plan_approved, collection_in_progress, validation_pass, validation_warn, validation_block, frozen]
+gate_a:
+  anonymous_path_required: true
+  core_or_documented_gap_per_stream: true
+  approval_fields: [approved_by, approved_at, approval_status]
+gate_b:
+  headline_review_rate: 1.0
+  included_review_rate: 0.10
+  default_mainstream_roles: 3
+  default_task_families: 4
+  default_source_families: 2
+  block_if:
+    - headline_missing_original_text_or_url
+    - country_claim_uses_low_or_unknown_geo
+    - developer_only_mainstream_claim
+    - access_boundary_violation
+    - reviewer_signature_missing
+  warn_if:
+    - optional_auth_path_unavailable
+    - single_source_theme
+    - subnational_gap
+    - low_confidence_non_headline_translation
+freeze:
+  allow_status: [validation_pass, validation_warn]
+  immutable_after_freeze: true

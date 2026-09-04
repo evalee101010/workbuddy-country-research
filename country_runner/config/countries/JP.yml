@@ -1,0 +1,51 @@
+version: 1
+identity:
+  iso2: JP
+  iso3: JPN
+  name_en: Japan
+  name_cn: 日本
+  currency: JPY
+  timezones: [Asia/Tokyo]
+languages:
+  core: [ja]
+  exploratory: [en]
+  migration_corridor: [zh]
+geography:
+  country_anchors: [Japan, 日本, 国内, JPY, 円]
+  allow_unknown_admin1: true
+  admin1:
+    - {code: JP-13, name_en: Tokyo, name_local: 東京都, anchors: [Tokyo, 東京, 東京都]}
+    - {code: JP-27, name_en: Osaka, name_local: 大阪府, anchors: [Osaka, 大阪, 大阪府]}
+    - {code: JP-23, name_en: Aichi, name_local: 愛知県, anchors: [Aichi, Nagoya, 愛知, 名古屋]}
+    - {code: JP-14, name_en: Kanagawa, name_local: 神奈川県, anchors: [Kanagawa, Yokohama, 神奈川, 横浜]}
+audiences:
+  mainstream_roles: [job_seekers, office_workers, sales_marketing, operations_admin_hr, freelancers_creators, small_business_owners]
+  advanced_roles: [no_code_automation_users, business_ai_power_users]
+  technical_supplement: [developers, technical_founders]
+task_families:
+  - {id: career_jobs, terms: {ja: [転職, 就職活動, 履歴書, 面接], en: [job search, resume, interview]}}
+  - {id: office_productivity, terms: {ja: [メール, プレゼン, 表計算, 資料作成, リサーチ], en: [email, presentation, spreadsheet, documents]}}
+  - {id: sales_marketing, terms: {ja: [営業, マーケティング, コンテンツ作成, 見込み客], en: [sales, marketing, content]}}
+  - {id: operations_admin, terms: {ja: [業務効率化, 総務, 人事, レポート], en: [operations, administration, HR, reporting]}}
+  - {id: small_business, terms: {ja: [中小企業, 個人事業, フリーランス, 顧客対応], en: [SME, small business, freelancer, customer service]}}
+products:
+  direct: [Claude Cowork, ChatGPT agent, Manus, Genspark, Perplexity Comet, Work Buddy]
+  adjacent: [Microsoft 365 Copilot, Google Workspace Gemini, Notion AI, Zapier, Make]
+channels:
+  - {name: ITreview, family: japan_b2b_review, status: Candidate, scope_default: country_candidate, candidate_streams: [A, B], access_mode: public_manual_partial, audience_bias: b2b_reviewers_and_campaigns, url: "https://www.itreview.jp/", seed_reason: "Japanese SaaS review candidate; review incentives and target product coverage require pilot."}
+  - {name: note, family: local_creator_platform, status: Candidate, scope_default: country_candidate, candidate_streams: [B, C], access_mode: public_manual, audience_bias: self_publishing_and_creator_commerce, url: "https://note.com/", seed_reason: "Candidate for Japanese work tutorials, templates and paid content funnels."}
+  - {name: X Japan public posts, family: social_discussion, status: Candidate, scope_default: country_candidate, candidate_streams: [A, B, C], access_mode: public_manual_or_optional_api, audience_bias: real_time_and_visibility, url: "https://x.com/", seed_reason: "Candidate for Japanese product reactions and creator content; geo evidence remains item-level."}
+  - {name: YouTube Japan, family: video_social, status: Candidate, scope_default: country_candidate, candidate_streams: [B, C], access_mode: public_manual_or_optional_api, audience_bias: creator_and_search_ranking, url: "https://www.youtube.com/", seed_reason: "Candidate for Japanese task demonstrations and public engagement."}
+  - {name: Qiita and Zenn, family: local_technical_content, status: Candidate, scope_default: country_candidate, candidate_streams: [A, B, C], access_mode: public_manual, audience_bias: technical_and_engineer, url: "https://qiita.com/", seed_reason: "Japan-specific technical supplement; must not count toward mainstream coverage by default."}
+  - {name: Xiaohongshu Japan Chinese content, family: diaspora_social, status: Candidate, scope_default: migration_corridor, candidate_streams: [B, C], access_mode: public_manual_partial, audience_bias: chinese_speaking_migrants, url: "https://www.xiaohongshu.com/", seed_reason: "Treat as China-to-Japan corridor unless local resident relevance is independently established."}
+  - {name: GitHub, family: technical_community, status: Candidate, scope_default: global_technical, candidate_streams: [A, B], access_mode: public_api_or_manual, audience_bias: Developer, url: "https://github.com/", seed_reason: "Global technical supplement; explicit Japan evidence required for country assignment."}
+access:
+  anonymous_public_path: [search_engine_discovery, public_page_manual_review, public_metrics_capture]
+  auth_optional: [X API, YouTube Data API, platform login]
+  consent_required: [private LINE, Slack, Discord or professional communities]
+  prohibited: [silent scraping of private groups, bypassing login or rate limits]
+research: {window_start: 2025-09-01, window_end: 2026-09-30, pilot_results_per_channel: 20, saturation_batches: 2, review_sample_rate: 0.10, required_mainstream_roles: 3, required_task_families: 4, required_source_families: 2}
+regional_mappings:
+  regions: [East Asia]
+  language_zones: [Japanese-speaking web]
+  migration_corridors: [China-to-Japan]

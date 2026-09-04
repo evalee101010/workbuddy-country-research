@@ -1,0 +1,50 @@
+version: 1
+identity:
+  iso2: US
+  iso3: USA
+  name_en: United States
+  name_cn: 美国
+  currency: USD
+  timezones: [America/New_York, America/Chicago, America/Denver, America/Los_Angeles]
+languages:
+  core: [en]
+  exploratory: [es]
+  migration_corridor: [zh]
+geography:
+  country_anchors: [United States, USA, U.S., USD]
+  allow_unknown_admin1: true
+  admin1:
+    - {code: US-CA, name_en: California, name_local: California, anchors: [California, San Francisco, Los Angeles]}
+    - {code: US-NY, name_en: New York, name_local: New York, anchors: [New York, NYC]}
+    - {code: US-TX, name_en: Texas, name_local: Texas, anchors: [Texas, Austin, Dallas, Houston]}
+audiences:
+  mainstream_roles: [job_seekers, office_workers, sales_marketing, operations_admin_hr, freelancers_creators, small_business_owners]
+  advanced_roles: [no_code_automation_users, business_ai_power_users]
+  technical_supplement: [developers, technical_founders]
+task_families:
+  - {id: career_jobs, terms: {en: [job search, resume, interview, portfolio], es: [búsqueda de empleo, currículum, entrevista]}}
+  - {id: office_productivity, terms: {en: [email, presentation, spreadsheet, documents, research], es: [correo, presentación, hoja de cálculo, documentos]}}
+  - {id: sales_marketing, terms: {en: [sales, marketing, content, lead generation], es: [ventas, marketing, contenido]}}
+  - {id: operations_admin, terms: {en: [operations, administration, HR, reporting], es: [operaciones, administración, recursos humanos]}}
+  - {id: small_business, terms: {en: [small business, freelancer, customer service, bookkeeping], es: [pequeña empresa, autónomo, servicio al cliente]}}
+products:
+  direct: [Claude Cowork, ChatGPT agent, Manus, Genspark, Perplexity Comet, Work Buddy]
+  adjacent: [Microsoft 365 Copilot, Google Workspace Gemini, Notion AI, Zapier, Make]
+channels:
+  - {name: G2 and Capterra, family: b2b_review, status: Candidate, scope_default: country_candidate, candidate_streams: [A], access_mode: public_manual_partial, audience_bias: b2b_reviewers_and_incentives, url: "https://www.g2.com/", seed_reason: "Candidate for role and company-size product feedback; country fields need validation."}
+  - {name: Reddit work and product communities, family: forum_social, status: Candidate, scope_default: country_candidate, candidate_streams: [A, B], access_mode: public_manual_conditional, audience_bias: reddit_users_and_self_selection, url: "https://www.reddit.com/", seed_reason: "Can surface detailed workflows and local small-business needs when text includes US evidence."}
+  - {name: YouTube and podcasts, family: creator_media, status: Candidate, scope_default: country_candidate, candidate_streams: [B, C], access_mode: public_manual_or_optional_api, audience_bias: creator_and_search_ranking, url: "https://www.youtube.com/", seed_reason: "Candidate for productivity demonstrations, creator funnels and long-form work scenarios."}
+  - {name: LinkedIn public posts, family: professional_social, status: Candidate, scope_default: country_candidate, candidate_streams: [B, C], access_mode: public_manual_partial, audience_bias: professional_self_presentation, url: "https://www.linkedin.com/", seed_reason: "Candidate for role and workplace context; commercial posts must be separated."}
+  - {name: TikTok and Instagram, family: short_form_social, status: Candidate, scope_default: country_candidate, candidate_streams: [B, C], access_mode: public_manual_partial, audience_bias: creator_and_algorithmic, url: "https://www.tiktok.com/", seed_reason: "Candidate for mainstream task hooks and visible engagement."}
+  - {name: Product Hunt, family: launch_community, status: Candidate, scope_default: global_unknown, candidate_streams: [A, C], access_mode: public_manual_or_optional_api, audience_bias: early_adopters_and_launch_campaigns, url: "https://www.producthunt.com/", seed_reason: "Discovery of new tools and creators; weak country attribution."}
+  - {name: GitHub, family: technical_community, status: Candidate, scope_default: global_technical, candidate_streams: [A, B], access_mode: public_api_or_manual, audience_bias: Developer, url: "https://github.com/", seed_reason: "Technical integration and failure supplement; not mainstream evidence by default."}
+access:
+  anonymous_public_path: [search_engine_discovery, public_page_manual_review, public_metrics_capture]
+  auth_optional: [Reddit Data API, YouTube Data API, X API, platform login]
+  consent_required: [private Slack, Discord, Facebook or professional groups]
+  prohibited: [silent scraping of private groups, bypassing login or rate limits]
+research: {window_start: 2025-09-01, window_end: 2026-09-30, pilot_results_per_channel: 20, saturation_batches: 2, review_sample_rate: 0.10, required_mainstream_roles: 3, required_task_families: 4, required_source_families: 2}
+regional_mappings:
+  regions: [North America]
+  language_zones: [English-speaking web, Spanish-speaking US web]
+  migration_corridors: [China-to-US, Latin-America-to-US]

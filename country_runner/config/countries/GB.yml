@@ -1,0 +1,50 @@
+version: 1
+identity:
+  iso2: GB
+  iso3: GBR
+  name_en: United Kingdom
+  name_cn: 英国
+  currency: GBP
+  timezones: [Europe/London]
+languages:
+  core: [en]
+  exploratory: []
+  migration_corridor: [zh]
+geography:
+  country_anchors: [United Kingdom, UK, Britain, British, GBP]
+  allow_unknown_admin1: true
+  admin1:
+    - {code: GB-ENG, name_en: England, name_local: England, anchors: [England, London, Manchester, Birmingham]}
+    - {code: GB-SCT, name_en: Scotland, name_local: Scotland, anchors: [Scotland, Edinburgh, Glasgow]}
+    - {code: GB-WLS, name_en: Wales, name_local: Wales, anchors: [Wales, Cardiff]}
+    - {code: GB-NIR, name_en: Northern Ireland, name_local: Northern Ireland, anchors: [Northern Ireland, Belfast]}
+audiences:
+  mainstream_roles: [job_seekers, office_workers, sales_marketing, operations_admin_hr, freelancers_creators, small_business_owners]
+  advanced_roles: [no_code_automation_users, business_ai_power_users]
+  technical_supplement: [developers, technical_founders]
+task_families:
+  - {id: career_jobs, terms: {en: [job search, CV, interview, portfolio]}}
+  - {id: office_productivity, terms: {en: [email, presentation, spreadsheet, documents, research]}}
+  - {id: sales_marketing, terms: {en: [sales, marketing, content, lead generation]}}
+  - {id: operations_admin, terms: {en: [operations, administration, HR, reporting]}}
+  - {id: small_business, terms: {en: [SME, small business, freelancer, customer service, bookkeeping]}}
+products:
+  direct: [Claude Cowork, ChatGPT agent, Manus, Genspark, Perplexity Comet, Work Buddy]
+  adjacent: [Microsoft 365 Copilot, Google Workspace Gemini, Notion AI, Zapier, Make]
+channels:
+  - {name: Trustpilot UK, family: review_platform, status: Candidate, scope_default: country_candidate, candidate_streams: [A], access_mode: public_manual, audience_bias: self_selected_reviewers, url: "https://uk.trustpilot.com/", seed_reason: "Candidate for product and billing feedback with profile/location caveats."}
+  - {name: UK Business Forums, family: local_business_forum, status: Candidate, scope_default: country_candidate, candidate_streams: [B], access_mode: public_manual, audience_bias: small_business_forum_users, url: "https://www.ukbusinessforums.co.uk/", seed_reason: "Candidate for SME workflows and pain points; recent activity must be piloted."}
+  - {name: Reddit UK work communities, family: forum_social, status: Candidate, scope_default: country_candidate, candidate_streams: [A, B], access_mode: public_manual_conditional, audience_bias: reddit_users_and_self_selection, url: "https://www.reddit.com/", seed_reason: "Local work and product communities can provide detailed narratives with explicit UK anchors."}
+  - {name: LinkedIn public posts, family: professional_social, status: Candidate, scope_default: country_candidate, candidate_streams: [B, C], access_mode: public_manual_partial, audience_bias: professional_self_presentation, url: "https://www.linkedin.com/", seed_reason: "Candidate for role, employer and creator signals."}
+  - {name: YouTube TikTok and Instagram, family: creator_social, status: Candidate, scope_default: country_candidate, candidate_streams: [B, C], access_mode: public_manual_partial, audience_bias: creator_and_algorithmic, url: "https://www.youtube.com/", seed_reason: "Candidate for mainstream task demonstrations and CTA funnels."}
+  - {name: GitHub, family: technical_community, status: Candidate, scope_default: global_technical, candidate_streams: [A, B], access_mode: public_api_or_manual, audience_bias: Developer, url: "https://github.com/", seed_reason: "Technical supplement only; explicit UK geo evidence required."}
+access:
+  anonymous_public_path: [search_engine_discovery, public_page_manual_review, public_metrics_capture]
+  auth_optional: [Reddit Data API, YouTube Data API, platform login]
+  consent_required: [private Slack, Discord, Facebook or professional groups]
+  prohibited: [silent scraping of private groups, bypassing login or rate limits]
+research: {window_start: 2025-09-01, window_end: 2026-09-30, pilot_results_per_channel: 20, saturation_batches: 2, review_sample_rate: 0.10, required_mainstream_roles: 3, required_task_families: 4, required_source_families: 2}
+regional_mappings:
+  regions: [Europe, British Isles]
+  language_zones: [English-speaking web]
+  migration_corridors: [China-to-UK, South-Asia-to-UK]

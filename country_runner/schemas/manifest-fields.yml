@@ -1,0 +1,15 @@
+version: 1
+required:
+  - run_id
+  - country_iso2
+  - country_iso3
+  - created_at
+  - state
+  - config_version
+  - codebook_version
+  - research_window
+  - anonymous_path_status
+  - input_hashes
+  - approvals
+  - warnings
+states: [initialized, discovery_ready, source_plan_pending, source_plan_approved, collection_in_progress, validation_pass, validation_warn, validation_block, frozen]

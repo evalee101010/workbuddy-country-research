@@ -1,0 +1,68 @@
+version: 1
+identity:
+  iso2: AE
+  iso3: ARE
+  name_en: United Arab Emirates
+  name_cn: 阿联酋
+  currency: AED
+  timezones: [Asia/Dubai]
+languages:
+  core: [en, ar]
+  exploratory: [hi, ur, ml]
+  migration_corridor: [zh]
+geography:
+  country_anchors: [UAE, United Arab Emirates, الإمارات العربية المتحدة, الإمارات, AED, dirham]
+  allow_unknown_admin1: true
+  admin1:
+    - {code: AE-AZ, name_en: Abu Dhabi, name_local: أبوظبي, anchors: [Abu Dhabi, أبوظبي, ابوظبي]}
+    - {code: AE-DU, name_en: Dubai, name_local: دبي, anchors: [Dubai, دبي]}
+    - {code: AE-SH, name_en: Sharjah, name_local: الشارقة, anchors: [Sharjah, الشارقة]}
+    - {code: AE-AJ, name_en: Ajman, name_local: عجمان, anchors: [Ajman, عجمان]}
+    - {code: AE-UQ, name_en: Umm Al Quwain, name_local: أم القيوين, anchors: [Umm Al Quwain, أم القيوين, ام القيوين]}
+    - {code: AE-RK, name_en: Ras Al Khaimah, name_local: رأس الخيمة, anchors: [Ras Al Khaimah, رأس الخيمة, راس الخيمة]}
+    - {code: AE-FU, name_en: Fujairah, name_local: الفجيرة, anchors: [Fujairah, الفجيرة]}
+audiences:
+  mainstream_roles: [job_seekers, office_workers, sales_marketing, operations_admin_hr, freelancers_creators, small_business_owners]
+  advanced_roles: [no_code_automation_users, business_ai_power_users]
+  technical_supplement: [developers, technical_founders]
+task_families:
+  - id: career_jobs
+    terms: {en: [job search, CV, resume, interview], ar: [البحث عن عمل, السيرة الذاتية, مقابلة عمل]}
+  - id: office_productivity
+    terms: {en: [email, presentation, spreadsheet, documents], ar: [البريد الإلكتروني, العروض التقديمية, جداول البيانات, المستندات]}
+  - id: sales_marketing
+    terms: {en: [sales, marketing, content, lead generation], ar: [المبيعات, التسويق, المحتوى, العملاء المحتملين]}
+  - id: operations_admin
+    terms: {en: [operations, administration, HR, reporting], ar: [العمليات, الإدارة, الموارد البشرية, التقارير]}
+  - id: small_business
+    terms: {en: [small business, freelancer, customer service, WhatsApp business], ar: [الأعمال الصغيرة, العمل الحر, خدمة العملاء, واتساب للأعمال]}
+products:
+  direct: [Claude Cowork, ChatGPT agent, Manus, Genspark, Perplexity Comet, Work Buddy]
+  adjacent: [Microsoft 365 Copilot, Google Workspace Gemini, Notion AI, Zapier, Make]
+channels:
+  - {name: Trustpilot, family: review_platform, status: Candidate, scope_default: country_candidate, candidate_streams: [A], access_mode: public_manual, audience_bias: self_selected_reviewers, url: "https://www.trustpilot.com/", seed_reason: "UAE pilot produced profile-level country clues; must revalidate current access."}
+  - {name: UAE Reddit communities, family: local_forum, status: Candidate, scope_default: country_candidate, candidate_streams: [A, B], access_mode: public_manual_conditional, audience_bias: expatriate_and_reddit_users, url: "https://www.reddit.com/", seed_reason: "Public local communities can contain UAE operational context; membership alone is not geo proof."}
+  - {name: LinkedIn public posts, family: professional_social, status: Candidate, scope_default: country_candidate, candidate_streams: [B, C], access_mode: public_manual_partial, audience_bias: professional_self_presentation, url: "https://www.linkedin.com/", seed_reason: "Useful for role and employer context; public visibility and commercial bias require review."}
+  - {name: YouTube, family: video_social, status: Candidate, scope_default: country_candidate, candidate_streams: [B, C], access_mode: public_manual_or_optional_api, audience_bias: creator_and_search_ranking, url: "https://www.youtube.com/", seed_reason: "Supports English/Arabic and emirate-level content discovery; region settings do not prove geography."}
+  - {name: Instagram and TikTok, family: short_form_social, status: Candidate, scope_default: country_candidate, candidate_streams: [B, C], access_mode: public_manual_partial, audience_bias: creator_and_algorithmic, url: "https://www.instagram.com/", seed_reason: "Candidate for mainstream productivity and career content; platform-specific pilot required."}
+  - {name: Hub71 and UAE ecosystem pages, family: ecosystem_directory, status: Candidate, scope_default: recruitment_only, candidate_streams: [B, C], access_mode: public_manual, audience_bias: startup_ecosystem, url: "https://www.hub71.com/", seed_reason: "Useful for discovering local roles and creators, not direct user feedback."}
+  - {name: Xiaohongshu overseas Chinese content, family: diaspora_social, status: Candidate, scope_default: migration_corridor, candidate_streams: [B, C], access_mode: public_manual_partial, audience_bias: chinese_speaking_migrants, url: "https://www.xiaohongshu.com/", seed_reason: "Treat as China-to-UAE corridor unless content proves broader local relevance."}
+  - {name: GitHub, family: technical_community, status: Candidate, scope_default: global_technical, candidate_streams: [A, B], access_mode: public_api_or_manual, audience_bias: Developer, url: "https://github.com/", seed_reason: "Technical workflow supplement only; country assignment requires explicit geo evidence."}
+access:
+  anonymous_public_path: [search_engine_discovery, public_page_manual_review, public_metrics_capture]
+  auth_optional: [YouTube Data API, X API, platform login for manual review]
+  consent_required: [private WhatsApp groups, private Telegram groups, closed Slack or Discord]
+  prohibited: [silent scraping of private groups, bypassing login or rate limits]
+research:
+  window_start: 2025-09-01
+  window_end: 2026-09-30
+  pilot_results_per_channel: 20
+  saturation_batches: 2
+  review_sample_rate: 0.10
+  required_mainstream_roles: 3
+  required_task_families: 4
+  required_source_families: 2
+regional_mappings:
+  regions: [GCC, MENA, Middle East]
+  language_zones: [Arabic-speaking web, English-speaking expatriate web]
+  migration_corridors: [China-to-UAE, India-to-UAE, Pakistan-to-UAE]
