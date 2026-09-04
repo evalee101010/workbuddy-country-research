@@ -1,6 +1,6 @@
 # 海外 Cowork 公开需求信号 Country Runner 设计
 
-> 文档状态：设计已确认，待用户书面复核<br>
+> 文档状态：用户已复核确认，可进入实施规划<br>
 > 版本：v1.0<br>
 > 日期：2026-09-03<br>
 > 上游基线：[海外 Cowork 类产品宏观市场研究执行方案](./2026-09-03-overseas-cowork-macro-market-research-design.md)<br>
@@ -391,6 +391,10 @@ runs/{ISO2}/{YYYY-MM-DD}/
 ├── 02-source-discovery.csv
 ├── 03-channel-fit-pilot.csv
 ├── 04-approved-source-plan.yml
+├── queries/
+│   ├── A-competitor-queries.csv
+│   ├── B-local-needs-queries.csv
+│   └── C-kol-koc-queries.csv
 ├── evidence/
 │   ├── A-competitor-feedback.csv
 │   ├── B-local-work-needs.csv
@@ -431,6 +435,8 @@ runs/{ISO2}/{YYYY-MM-DD}/
 - `build`：只有 Gate A 已批准且 Gate B 没有 `BLOCK` 时，生成 Markdown/XLSX 并写入冻结日志。
 
 当一个国家只有一个未冻结 run 时，命令可默认使用它；存在多个未冻结 run 时必须拒绝执行并要求传入 `--run-id`，避免多人并行时写错目录。任何命令失败都不得删除或覆盖已有原始数据。
+
+`validate` 第一次运行生成或更新审计清单；审核者完成抽查并填写签署字段后再次运行，Runner 才能给出最终 `validation_pass` 或 `validation_warn`。未签署或仍有必改项时保持 `validation_block`。
 
 ### 7.3 自动化与人工边界
 
