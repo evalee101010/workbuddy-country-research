@@ -56,6 +56,7 @@ class DiscoveryTests(unittest.TestCase):
             for path in (run_dir / "queries").glob("*.csv"):
                 all_rows.extend(read_rows(path))
             self.assertTrue({"core", "exploratory", "migration_corridor"}.issubset({row["language_role"] for row in all_rows}))
+            self.assertTrue(all(row["audience_role"] for row in all_rows))
             github_rows = [row for row in all_rows if row["source_name"] == "GitHub"]
             self.assertTrue(github_rows)
             self.assertEqual({row["source_scope_default"] for row in github_rows}, {"global_technical"})

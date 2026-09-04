@@ -40,12 +40,15 @@ def build_parser() -> argparse.ArgumentParser:
         if command == "init":
             subparser.add_argument("--researcher", default="Unknown")
 
-    migration = subparsers.add_parser("migrate-uae", help=argparse.SUPPRESS)
-    migration.add_argument("--source", required=True)
-    migration.add_argument("--run-id", required=True)
-    migration.add_argument("--project-root")
-    migration.add_argument("--runs-root")
+    return parser
 
+
+def build_migration_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="country-runner migrate-uae")
+    parser.add_argument("--source", required=True)
+    parser.add_argument("--run-id", required=True)
+    parser.add_argument("--project-root")
+    parser.add_argument("--runs-root")
     return parser
 
 
@@ -59,19 +62,12 @@ def _path_payload(args: argparse.Namespace) -> dict:
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
-    parser = build_parser()
-    args = parser.parse_args(argv)
-    if args.show_paths:
-        print(json.dumps(_path_payload(args), ensure_ascii=False))
-        return 0
-    if not args.command:
-        parser.print_help()
-        return 0
-
-    if args.command == "migrate-uae":
+    raw_argv = list(argv) if argv is not None else sys.argv[1:]
+    if raw_argv and raw_argv[0] == "migrate-uae":
         from .manifest import ManifestError, resolve_run_dir
         from .migrate_uae import migrate_uae
 
+        args = build_migration_parser().parse_args(raw_argv[1:])
         payload = _path_payload(args)
         try:
             run_dir = resolve_run_dir(Path(payload["runs_root"]), "AE", args.run_id)
@@ -81,6 +77,15 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             return 2
         result["run_dir"] = str(run_dir)
         print(json.dumps(result, ensure_ascii=False))
+        return 0
+
+    parser = build_parser()
+    args = parser.parse_args(raw_argv)
+    if args.show_paths:
+        print(json.dumps(_path_payload(args), ensure_ascii=False))
+        return 0
+    if not args.command:
+        parser.print_help()
         return 0
 
     payload = _path_payload(args)
@@ -131,6 +136,33 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             print(f"ERROR: {error}", file=sys.stderr)
             return 2
         result["run_dir"] = str(run_dir)
+        print(json.dumps(result, ensure_ascii=False))
+        return 0
+
+    if args.command == "validate":
+        from .manifest import ManifestError, resolve_run_dir
+        from .validation import validate_run
+
+        try:
+            run_dir = resolve_run_dir(Path(payload["runs_root"]), country, args.run_id)
+            result = validate_run(run_dir, Path(payload["config_root"]))
+        except ManifestError as error:
+            print(f"ERROR: {error}", file=sys.stderr)
+            return 2
+        result["run_dir"] = str(run_dir)
+        print(json.dumps(result, ensure_ascii=False))
+        return 0
+
+    if args.command == "build":
+        from .build import build_run
+        from .manifest import ManifestError, resolve_run_dir
+
+        try:
+            run_dir = resolve_run_dir(Path(payload["runs_root"]), country, args.run_id)
+            result = build_run(run_dir, Path(payload["config_root"]))
+        except ManifestError as error:
+            print(f"ERROR: {error}", file=sys.stderr)
+            return 2
         print(json.dumps(result, ensure_ascii=False))
         return 0
 

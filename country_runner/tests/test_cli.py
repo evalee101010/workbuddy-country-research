@@ -27,6 +27,7 @@ class CliSmokeTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         for command in ("init", "discover", "pilot", "validate", "build"):
             self.assertIn(command, result.stdout)
+        self.assertNotIn("migrate-uae", result.stdout)
 
     def test_unknown_command_fails_clearly(self) -> None:
         result = self.run_cli("unknown-command")

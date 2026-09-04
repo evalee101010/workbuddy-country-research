@@ -96,6 +96,7 @@ def _make_query_row(
     scope_anchor: str,
     admin1_name: str = "",
     product: str = "",
+    audience_role: str = "",
 ) -> dict:
     task_term = _term_for_language(task, language["code"])
     stable_key = "|".join([
@@ -115,6 +116,7 @@ def _make_query_row(
         "admin1_name": admin1_name,
         "query_language": language["code"],
         "language_role": language["role"],
+        "audience_role": audience_role,
         "task_family": task["id"],
         "product": product,
         "query": _query_text(stream, channel, task_term, scope_anchor, product),
@@ -134,6 +136,7 @@ def generate_queries(config: dict) -> Dict[str, List[dict]]:
     primary_language = core_languages[0]
     identity = config["identity"]
     direct_products = config["products"]["direct"]
+    mainstream_roles = config["audiences"]["mainstream_roles"]
 
     for channel_index, channel in enumerate(config["channels"]):
         for stream in channel["candidate_streams"]:
@@ -155,6 +158,9 @@ def generate_queries(config: dict) -> Dict[str, List[dict]]:
                         scope_name=identity["iso3"],
                         scope_anchor=_anchor_for_language(config, language["code"]),
                         product=product,
+                        audience_role=mainstream_roles[
+                            (channel_index + language_index + repetition) % len(mainstream_roles)
+                        ],
                     ))
 
             for admin_index, admin1 in enumerate(config["geography"].get("admin1", [])):
@@ -172,6 +178,9 @@ def generate_queries(config: dict) -> Dict[str, List[dict]]:
                     scope_anchor=str(admin1["anchors"][0]),
                     admin1_name=admin1["name_en"],
                     product=product,
+                    audience_role=mainstream_roles[
+                        (channel_index + admin_index) % len(mainstream_roles)
+                    ],
                 ))
     return output
 
