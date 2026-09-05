@@ -1,0 +1,30 @@
+version: 1
+tiers:
+  A_direct:
+    - Claude Cowork
+    - ChatGPT agent
+    - Manus
+    - Genspark
+    - Perplexity Comet
+    - Work Buddy
+  B_suite:
+    - Microsoft 365 Copilot
+    - Google Workspace Gemini
+    - Notion AI
+    - Zapier Agents
+  C_no_code:
+    - Gumloop
+    - Lindy
+    - Relay.app
+    - Make
+    - n8n
+    - Power Automate
+  D_reference:
+    - Cursor
+    - Claude Code
+    - GitHub Copilot
+    - Trae
+    - UiPath
+rules:
+  core_threshold: "Meets four of five Cowork criteria"
+  developer_limit: "Reference tier cannot independently support mainstream demand conclusions"

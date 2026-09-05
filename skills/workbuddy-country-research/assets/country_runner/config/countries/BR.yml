@@ -1,0 +1,51 @@
+version: 1
+identity:
+  iso2: BR
+  iso3: BRA
+  name_en: Brazil
+  name_cn: 巴西
+  currency: BRL
+  timezones: [America/Sao_Paulo, America/Manaus]
+languages:
+  core: [pt-BR]
+  exploratory: [en]
+  migration_corridor: []
+geography:
+  country_anchors: [Brazil, Brasil, brasileiro, brasileira, BRL, real]
+  allow_unknown_admin1: true
+  admin1:
+    - {code: BR-SP, name_en: Sao Paulo, name_local: São Paulo, anchors: [São Paulo, Sao Paulo, SP]}
+    - {code: BR-RJ, name_en: Rio de Janeiro, name_local: Rio de Janeiro, anchors: [Rio de Janeiro, RJ]}
+    - {code: BR-MG, name_en: Minas Gerais, name_local: Minas Gerais, anchors: [Minas Gerais, Belo Horizonte]}
+    - {code: BR-PR, name_en: Parana, name_local: Paraná, anchors: [Paraná, Parana, Curitiba]}
+audiences:
+  mainstream_roles: [job_seekers, office_workers, sales_marketing, operations_admin_hr, freelancers_creators, small_business_owners]
+  advanced_roles: [no_code_automation_users, business_ai_power_users]
+  technical_supplement: [developers, technical_founders]
+task_families:
+  - {id: career_jobs, terms: {pt-BR: [procurar emprego, currículo, entrevista, portfólio], en: [job search, resume, interview]}}
+  - {id: office_productivity, terms: {pt-BR: [e-mail, apresentação, planilha, documentos, pesquisa], en: [email, presentation, spreadsheet, documents]}}
+  - {id: sales_marketing, terms: {pt-BR: [vendas, marketing, conteúdo, geração de leads], en: [sales, marketing, content]}}
+  - {id: operations_admin, terms: {pt-BR: [operações, administração, RH, relatórios], en: [operations, administration, HR, reporting]}}
+  - {id: small_business, terms: {pt-BR: [pequena empresa, MEI, freelancer, atendimento ao cliente], en: [small business, freelancer, customer service]}}
+products:
+  direct: [Claude Cowork, ChatGPT agent, Manus, Genspark, Perplexity Comet, Work Buddy]
+  adjacent: [Microsoft 365 Copilot, Google Workspace Gemini, Notion AI, Zapier, Make]
+channels:
+  - {name: Reclame Aqui, family: local_complaint_platform, status: Candidate, scope_default: country_candidate, candidate_streams: [A], access_mode: public_manual, audience_bias: complaint_and_resolution, url: "https://www.reclameaqui.com.br/", seed_reason: "Brazil-specific complaint candidate for billing, support and trust; target-product yield must be piloted."}
+  - {name: Brazilian YouTube TikTok and Instagram, family: creator_social, status: Candidate, scope_default: country_candidate, candidate_streams: [A, B, C], access_mode: public_manual_partial, audience_bias: creator_and_algorithmic, url: "https://www.youtube.com/", seed_reason: "Primary candidate for Portuguese tutorials, creator funnels and visible engagement."}
+  - {name: Brazilian Reddit communities, family: forum_social, status: Candidate, scope_default: country_candidate, candidate_streams: [A, B], access_mode: public_manual_conditional, audience_bias: reddit_users_and_self_selection, url: "https://www.reddit.com/", seed_reason: "Candidate for local work and product narratives with explicit Brazil context."}
+  - {name: LinkedIn Brazil public posts, family: professional_social, status: Candidate, scope_default: country_candidate, candidate_streams: [B, C], access_mode: public_manual_partial, audience_bias: professional_self_presentation, url: "https://www.linkedin.com/", seed_reason: "Candidate for role, employer, agency and SME workflow signals."}
+  - {name: App stores Brazil storefront, family: app_review, status: Candidate, scope_default: global_unknown, candidate_streams: [A], access_mode: public_manual, audience_bias: mobile_users_and_storefront, url: "https://apps.apple.com/br/", seed_reason: "Portuguese product feedback discovery; storefront alone is not country proof."}
+  - {name: TabNews and Brazilian AI communities, family: local_technical_content, status: Candidate, scope_default: country_candidate, candidate_streams: [A, B, C], access_mode: public_manual, audience_bias: technical_and_early_adopter, url: "https://www.tabnews.com.br/", seed_reason: "Technical supplement and local-source discovery seed; recent relevant yield must be piloted."}
+  - {name: GitHub, family: technical_community, status: Candidate, scope_default: global_technical, candidate_streams: [A, B], access_mode: public_api_or_manual, audience_bias: Developer, url: "https://github.com/", seed_reason: "Technical supplement only; explicit Brazil geo evidence required."}
+access:
+  anonymous_public_path: [search_engine_discovery, public_page_manual_review, public_metrics_capture]
+  auth_optional: [YouTube Data API, Reddit Data API, platform login]
+  consent_required: [private WhatsApp, Telegram, Facebook, Slack or Discord groups]
+  prohibited: [silent scraping of private groups, bypassing login or rate limits]
+research: {window_start: 2025-09-01, window_end: 2026-09-30, pilot_results_per_channel: 20, saturation_batches: 2, review_sample_rate: 0.10, required_mainstream_roles: 3, required_task_families: 4, required_source_families: 2}
+regional_mappings:
+  regions: [Latin America]
+  language_zones: [Brazilian Portuguese web, Portuguese-speaking web]
+  migration_corridors: []

@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+"""Run deterministic internal validation for one country run."""
+
+import argparse
+import json
+import sys
+
+from prepare_workspace import ensure_runtime, resolve_workspace
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Validate one internal WorkBuddy country run.")
+    parser.add_argument("country")
+    parser.add_argument("--run-id", required=True)
+    parser.add_argument("--workspace")
+    args = parser.parse_args()
+    workspace = resolve_workspace(args.workspace)
+    try:
+        runtime, _ = ensure_runtime(workspace)
+        sys.path.insert(0, str(runtime))
+        from country_runner.internal_validation import validate_internal_run
+        from country_runner.manifest import ManifestError, resolve_run_dir
+
+        run_dir = resolve_run_dir(workspace / "research" / "runs", args.country, args.run_id)
+        result = validate_internal_run(run_dir, runtime / "config", runtime / "templates")
+    except (ManifestError, OSError, RuntimeError, ValueError) as error:
+        print(f"ERROR: {error}", file=sys.stderr)
+        return 2
+    print(json.dumps(result, ensure_ascii=False))
+    return 2 if result["status"] == "internal_validation_block" else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,28 @@
+version: 1
+required_top_level:
+  - identity
+  - languages
+  - geography
+  - audiences
+  - task_families
+  - products
+  - channels
+  - access
+  - research
+  - regional_mappings
+channel_required_fields:
+  - name
+  - family
+  - status
+  - scope_default
+  - candidate_streams
+  - access_mode
+  - audience_bias
+  - url
+  - seed_reason
+allowed_candidate_scopes:
+  - country_candidate
+  - global_technical
+  - global_unknown
+  - migration_corridor
+  - recruitment_only

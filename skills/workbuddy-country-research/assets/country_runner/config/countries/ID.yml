@@ -1,0 +1,51 @@
+version: 1
+identity:
+  iso2: ID
+  iso3: IDN
+  name_en: Indonesia
+  name_cn: 印度尼西亚
+  currency: IDR
+  timezones: [Asia/Jakarta, Asia/Makassar, Asia/Jayapura]
+languages:
+  core: [id]
+  exploratory: [en]
+  migration_corridor: []
+geography:
+  country_anchors: [Indonesia, Indonesia, IDR, rupiah]
+  allow_unknown_admin1: true
+  admin1:
+    - {code: ID-JK, name_en: Jakarta, name_local: Jakarta, anchors: [Jakarta, Jabodetabek]}
+    - {code: ID-JB, name_en: West Java, name_local: Jawa Barat, anchors: [West Java, Jawa Barat, Bandung]}
+    - {code: ID-JI, name_en: East Java, name_local: Jawa Timur, anchors: [East Java, Jawa Timur, Surabaya]}
+    - {code: ID-BA, name_en: Bali, name_local: Bali, anchors: [Bali, Denpasar]}
+audiences:
+  mainstream_roles: [job_seekers, office_workers, sales_marketing, operations_admin_hr, freelancers_creators, small_business_owners]
+  advanced_roles: [no_code_automation_users, business_ai_power_users]
+  technical_supplement: [developers, technical_founders]
+task_families:
+  - {id: career_jobs, terms: {id: [cari kerja, CV, lamaran kerja, wawancara], en: [job search, resume, interview]}}
+  - {id: office_productivity, terms: {id: [email, presentasi, spreadsheet, dokumen, riset], en: [email, presentation, spreadsheet, documents]}}
+  - {id: sales_marketing, terms: {id: [penjualan, pemasaran, konten, prospek], en: [sales, marketing, content]}}
+  - {id: operations_admin, terms: {id: [operasional, administrasi, HR, laporan], en: [operations, administration, HR, reporting]}}
+  - {id: small_business, terms: {id: [UMKM, usaha kecil, freelancer, layanan pelanggan], en: [SME, small business, freelancer, customer service]}}
+products:
+  direct: [Claude Cowork, ChatGPT agent, Manus, Genspark, Perplexity Comet, Work Buddy]
+  adjacent: [Microsoft 365 Copilot, Google Workspace Gemini, Notion AI, Zapier, Make]
+channels:
+  - {name: Indonesian YouTube TikTok and Instagram, family: creator_social, status: Candidate, scope_default: country_candidate, candidate_streams: [A, B, C], access_mode: public_manual_partial, audience_bias: creator_and_algorithmic, url: "https://www.youtube.com/", seed_reason: "Primary candidate for Bahasa Indonesia productivity, career and UMKM content."}
+  - {name: Indonesian Reddit communities, family: forum_social, status: Candidate, scope_default: country_candidate, candidate_streams: [A, B], access_mode: public_manual_conditional, audience_bias: digitally_savvy_and_access_constraints, url: "https://www.reddit.com/", seed_reason: "Candidate for detailed local discussions; access and population bias must be explicit."}
+  - {name: KASKUS, family: legacy_local_forum, status: Candidate, scope_default: country_candidate, candidate_streams: [A, B], access_mode: public_manual, audience_bias: legacy_forum_users, url: "https://www.kaskus.co.id/", seed_reason: "Candidate-validate only: known local forum but current relevant activity may be low."}
+  - {name: LinkedIn Indonesia public posts, family: professional_social, status: Candidate, scope_default: country_candidate, candidate_streams: [B, C], access_mode: public_manual_partial, audience_bias: professional_self_presentation, url: "https://www.linkedin.com/", seed_reason: "Candidate for role, employer and SME/agency workflow signals."}
+  - {name: Google Play Indonesia storefront, family: app_review, status: Candidate, scope_default: global_unknown, candidate_streams: [A], access_mode: public_manual, audience_bias: mobile_users_and_storefront, url: "https://play.google.com/store", seed_reason: "Bahasa feedback discovery; storefront does not prove reviewer residence."}
+  - {name: Public Facebook and WhatsApp business communities, family: community_social, status: Candidate, scope_default: recruitment_only, candidate_streams: [B, C], access_mode: public_manual_or_consent, audience_bias: community_members_and_sellers, url: "https://www.facebook.com/", seed_reason: "Potential UMKM discovery/recruitment source; private groups require consent."}
+  - {name: GitHub, family: technical_community, status: Candidate, scope_default: global_technical, candidate_streams: [A, B], access_mode: public_api_or_manual, audience_bias: Developer, url: "https://github.com/", seed_reason: "Technical supplement only; explicit Indonesia evidence required."}
+access:
+  anonymous_public_path: [search_engine_discovery, public_page_manual_review, public_metrics_capture]
+  auth_optional: [YouTube Data API, platform login, Reddit Data API where available]
+  consent_required: [private WhatsApp, Facebook, Telegram, Slack or Discord groups]
+  prohibited: [silent scraping of private groups, bypassing login or network restrictions]
+research: {window_start: 2025-09-01, window_end: 2026-09-30, pilot_results_per_channel: 20, saturation_batches: 2, review_sample_rate: 0.10, required_mainstream_roles: 3, required_task_families: 4, required_source_families: 2}
+regional_mappings:
+  regions: [Southeast Asia, ASEAN]
+  language_zones: [Indonesian-speaking web]
+  migration_corridors: []

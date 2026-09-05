@@ -1,0 +1,63 @@
+version: 1
+identity:
+  iso2: SA
+  iso3: SAU
+  name_en: Saudi Arabia
+  name_cn: 沙特阿拉伯
+  currency: SAR
+  timezones: [Asia/Riyadh]
+languages:
+  core: [ar, en]
+  exploratory: []
+  migration_corridor: [ur, hi]
+geography:
+  country_anchors: [Saudi Arabia, KSA, المملكة العربية السعودية, السعودية, SAR, ريال]
+  allow_unknown_admin1: true
+  admin1:
+    - {code: SA-01, name_en: Riyadh, name_local: الرياض, anchors: [Riyadh, الرياض]}
+    - {code: SA-02, name_en: Makkah, name_local: مكة المكرمة, anchors: [Makkah, Mecca, مكة, Jeddah, جدة]}
+    - {code: SA-04, name_en: Eastern Province, name_local: المنطقة الشرقية, anchors: [Eastern Province, Dammam, Khobar, المنطقة الشرقية, الدمام, الخبر]}
+audiences:
+  mainstream_roles: [job_seekers, office_workers, sales_marketing, operations_admin_hr, freelancers_creators, small_business_owners]
+  advanced_roles: [no_code_automation_users, business_ai_power_users]
+  technical_supplement: [developers, technical_founders]
+task_families:
+  - id: career_jobs
+    terms: {ar: [البحث عن عمل, السيرة الذاتية, مقابلة عمل], en: [job search, CV, interview]}
+  - id: office_productivity
+    terms: {ar: [البريد الإلكتروني, العروض التقديمية, جداول البيانات, المستندات], en: [email, presentation, spreadsheet, documents]}
+  - id: sales_marketing
+    terms: {ar: [المبيعات, التسويق, صناعة المحتوى, العملاء المحتملين], en: [sales, marketing, content creation, lead generation]}
+  - id: operations_admin
+    terms: {ar: [العمليات, الإدارة, الموارد البشرية, التقارير], en: [operations, administration, HR, reporting]}
+  - id: small_business
+    terms: {ar: [المنشآت الصغيرة, العمل الحر, خدمة العملاء, التجارة الإلكترونية], en: [small business, freelancer, customer service, ecommerce]}
+products:
+  direct: [Claude Cowork, ChatGPT agent, Manus, Genspark, Perplexity Comet, Work Buddy]
+  adjacent: [Microsoft 365 Copilot, Google Workspace Gemini, Notion AI, Zapier, Make]
+channels:
+  - {name: X public posts, family: social_discussion, status: Candidate, scope_default: country_candidate, candidate_streams: [A, B, C], access_mode: public_manual_or_optional_api, audience_bias: real_time_and_visibility, url: "https://x.com/", seed_reason: "Saudi official bodies maintain X channels; historical research still requires access and geo validation."}
+  - {name: YouTube, family: video_social, status: Candidate, scope_default: country_candidate, candidate_streams: [B, C], access_mode: public_manual_or_optional_api, audience_bias: creator_and_search_ranking, url: "https://www.youtube.com/", seed_reason: "Candidate for Arabic long-form demonstrations and career/business content."}
+  - {name: Snapchat Instagram and TikTok, family: short_form_social, status: Candidate, scope_default: country_candidate, candidate_streams: [B, C], access_mode: public_manual_partial, audience_bias: creator_and_algorithmic, url: "https://www.snapchat.com/", seed_reason: "Saudi official organizations use these channels; each platform needs separate pilot and metrics."}
+  - {name: LinkedIn public posts, family: professional_social, status: Candidate, scope_default: country_candidate, candidate_streams: [B, C], access_mode: public_manual_partial, audience_bias: professional_self_presentation, url: "https://www.linkedin.com/", seed_reason: "Candidate for workplace role, hiring and business workflow signals."}
+  - {name: App stores and public reviews, family: review_platform, status: Candidate, scope_default: global_unknown, candidate_streams: [A], access_mode: public_manual, audience_bias: mobile_and_self_selected_reviewers, url: "https://apps.apple.com/sa/", seed_reason: "Arabic product feedback discovery; storefront alone does not prove reviewer country."}
+  - {name: Saudi public business communities, family: ecosystem_directory, status: Candidate, scope_default: recruitment_only, candidate_streams: [B, C], access_mode: public_manual, audience_bias: ecosystem_participants, url: "https://www.monshaat.gov.sa/", seed_reason: "Discover SME roles, events and creators; not direct product feedback by default."}
+  - {name: GitHub, family: technical_community, status: Candidate, scope_default: global_technical, candidate_streams: [A, B], access_mode: public_api_or_manual, audience_bias: Developer, url: "https://github.com/", seed_reason: "Technical supplement only; explicit Saudi geo evidence required."}
+access:
+  anonymous_public_path: [search_engine_discovery, public_page_manual_review, public_metrics_capture]
+  auth_optional: [X API, YouTube Data API, platform login for manual review]
+  consent_required: [private WhatsApp groups, private Telegram groups, closed communities]
+  prohibited: [silent scraping of private groups, bypassing login or rate limits]
+research:
+  window_start: 2025-09-01
+  window_end: 2026-09-30
+  pilot_results_per_channel: 20
+  saturation_batches: 2
+  review_sample_rate: 0.10
+  required_mainstream_roles: 3
+  required_task_families: 4
+  required_source_families: 2
+regional_mappings:
+  regions: [GCC, MENA, Middle East]
+  language_zones: [Arabic-speaking web]
+  migration_corridors: [South-Asia-to-Saudi-Arabia]

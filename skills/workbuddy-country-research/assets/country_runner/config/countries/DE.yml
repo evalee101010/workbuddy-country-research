@@ -1,0 +1,50 @@
+version: 1
+identity:
+  iso2: DE
+  iso3: DEU
+  name_en: Germany
+  name_cn: 德国
+  currency: EUR
+  timezones: [Europe/Berlin]
+languages:
+  core: [de]
+  exploratory: [en]
+  migration_corridor: []
+geography:
+  country_anchors: [Germany, Deutschland, deutsch, EUR]
+  allow_unknown_admin1: true
+  admin1:
+    - {code: DE-BE, name_en: Berlin, name_local: Berlin, anchors: [Berlin]}
+    - {code: DE-BY, name_en: Bavaria, name_local: Bayern, anchors: [Bavaria, Bayern, München, Munich]}
+    - {code: DE-NW, name_en: North Rhine-Westphalia, name_local: Nordrhein-Westfalen, anchors: [Nordrhein-Westfalen, NRW, Köln, Cologne, Düsseldorf]}
+    - {code: DE-HE, name_en: Hesse, name_local: Hessen, anchors: [Hessen, Frankfurt]}
+audiences:
+  mainstream_roles: [job_seekers, office_workers, sales_marketing, operations_admin_hr, freelancers_creators, small_business_owners]
+  advanced_roles: [no_code_automation_users, business_ai_power_users]
+  technical_supplement: [developers, technical_founders]
+task_families:
+  - {id: career_jobs, terms: {de: [Jobsuche, Lebenslauf, Bewerbung, Vorstellungsgespräch], en: [job search, CV, interview]}}
+  - {id: office_productivity, terms: {de: [E-Mail, Präsentation, Tabellenkalkulation, Dokumente, Recherche], en: [email, presentation, spreadsheet, documents]}}
+  - {id: sales_marketing, terms: {de: [Vertrieb, Marketing, Inhalte, Leadgenerierung], en: [sales, marketing, content]}}
+  - {id: operations_admin, terms: {de: [Betrieb, Verwaltung, Personalwesen, Berichte], en: [operations, administration, HR, reporting]}}
+  - {id: small_business, terms: {de: [KMU, Kleinunternehmen, Freelancer, Kundenservice], en: [SME, small business, freelancer, customer service]}}
+products:
+  direct: [Claude Cowork, ChatGPT agent, Manus, Genspark, Perplexity Comet, Work Buddy]
+  adjacent: [Microsoft 365 Copilot, Google Workspace Gemini, Notion AI, Zapier, Make]
+channels:
+  - {name: OMR Reviews, family: dach_b2b_review, status: Candidate, scope_default: country_candidate, candidate_streams: [A, B], access_mode: public_manual, audience_bias: dach_b2b_and_marketing, url: "https://omr.com/de/reviews", seed_reason: "German-language B2B software review candidate; product coverage and access require pilot."}
+  - {name: heise Forum, family: local_tech_forum, status: Candidate, scope_default: country_candidate, candidate_streams: [A, B], access_mode: public_manual, audience_bias: technical_and_it_readers, url: "https://www.heise.de/forum/", seed_reason: "German forum candidate with technical bias; keep as supplement unless mainstream tasks emerge."}
+  - {name: German Reddit communities, family: forum_social, status: Candidate, scope_default: country_candidate, candidate_streams: [A, B], access_mode: public_manual_conditional, audience_bias: reddit_users_and_self_selection, url: "https://www.reddit.com/", seed_reason: "Candidate for German work and product narratives with body-level geo evidence."}
+  - {name: LinkedIn and Xing public content, family: professional_social, status: Candidate, scope_default: country_candidate, candidate_streams: [B, C], access_mode: public_manual_partial, audience_bias: professional_self_presentation, url: "https://www.linkedin.com/", seed_reason: "Candidate for DACH workplace and creator content; commercial bias review required."}
+  - {name: YouTube TikTok and Instagram, family: creator_social, status: Candidate, scope_default: country_candidate, candidate_streams: [B, C], access_mode: public_manual_partial, audience_bias: creator_and_algorithmic, url: "https://www.youtube.com/", seed_reason: "Candidate for German mainstream work tutorials and CTA funnels."}
+  - {name: GitHub, family: technical_community, status: Candidate, scope_default: global_technical, candidate_streams: [A, B], access_mode: public_api_or_manual, audience_bias: Developer, url: "https://github.com/", seed_reason: "Technical supplement only; Germany assignment requires explicit evidence."}
+access:
+  anonymous_public_path: [search_engine_discovery, public_page_manual_review, public_metrics_capture]
+  auth_optional: [platform login, YouTube Data API, Reddit Data API]
+  consent_required: [private Slack, Discord, LinkedIn or Xing groups]
+  prohibited: [silent scraping of private groups, bypassing login or rate limits]
+research: {window_start: 2025-09-01, window_end: 2026-09-30, pilot_results_per_channel: 20, saturation_batches: 2, review_sample_rate: 0.10, required_mainstream_roles: 3, required_task_families: 4, required_source_families: 2}
+regional_mappings:
+  regions: [Europe, DACH]
+  language_zones: [German-speaking web]
+  migration_corridors: []

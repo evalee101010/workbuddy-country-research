@@ -1,0 +1,7 @@
+interface:
+  display_name: "WorkBuddy Country Research"
+  short_description: "逐国采集、校验并打包可合并的公开用户需求与内容信号数据"
+  brand_color: "#315C72"
+  default_prompt: "Use $workbuddy-country-research to run and package one country's public WorkBuddy/Cowork demand-signal research."
+policy:
+  allow_implicit_invocation: true

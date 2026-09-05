@@ -1,0 +1,35 @@
+version: 1
+families:
+  review_platform:
+    default_streams: [A]
+    default_bias: self_selected_reviewers
+  app_store:
+    default_streams: [A]
+    default_bias: mobile_and_storefront
+  forum_social:
+    default_streams: [A, B]
+    default_bias: community_members_and_self_selection
+  professional_social:
+    default_streams: [B, C]
+    default_bias: professional_self_presentation
+  creator_social:
+    default_streams: [B, C]
+    default_bias: creator_and_algorithmic
+  technical_community:
+    default_streams: [A, B]
+    default_bias: Developer
+  ecosystem_directory:
+    default_streams: [B, C]
+    default_bias: ecosystem_participants
+  diaspora_social:
+    default_streams: [B, C]
+    default_bias: migration_corridor
+access_status:
+  - Ready-API
+  - Ready-Download
+  - Ready-Manual-Export
+  - Manual-Review
+  - Conditional
+  - Candidate-Validate
+  - Reference-Only
+  - Planned

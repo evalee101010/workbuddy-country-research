@@ -1,0 +1,55 @@
+#!/usr/bin/env python3
+"""Workspace-safe launcher for country init, discovery and source pilots."""
+
+import os
+import subprocess
+import sys
+
+from prepare_workspace import ensure_runtime, resolve_workspace
+
+
+HELP = """usage: workbuddy-country-runner COMMAND COUNTRY [options]
+
+Internal public-signal country workflow:
+  init      initialize a country run and fixed-schema tables
+  discover  seed locally adapted candidate sources and A/B/C query packs
+  pilot     summarize channel-fit evidence and write the internal source plan
+
+Use validate-country-run for structural checks and package-country-run for the
+mergeable ZIP. The strict Gate B report commands are outside this workflow.
+"""
+
+
+def main():
+    arguments = sys.argv[1:]
+    if not arguments or arguments[0] in {"-h", "--help"}:
+        print(HELP)
+        return 0
+    if arguments[0] not in {"init", "discover", "pilot"}:
+        print(f"ERROR: unsupported internal-workflow command: {arguments[0]}", file=sys.stderr)
+        print(HELP, file=sys.stderr)
+        return 2
+    try:
+        runtime, _ = ensure_runtime(resolve_workspace())
+    except (OSError, RuntimeError) as error:
+        print(f"ERROR: {error}", file=sys.stderr)
+        return 2
+    environment = os.environ.copy()
+    existing = environment.get("PYTHONPATH")
+    environment["PYTHONPATH"] = str(runtime) + (os.pathsep + existing if existing else "")
+    command = [
+        sys.executable,
+        "-m",
+        "country_runner",
+        arguments[0],
+        "--project-root",
+        str(runtime.parent),
+        "--runs-root",
+        str(resolve_workspace() / "research" / "runs"),
+        *arguments[1:],
+    ]
+    return subprocess.run(command, env=environment, check=False).returncode
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

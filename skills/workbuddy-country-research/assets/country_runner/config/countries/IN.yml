@@ -1,0 +1,52 @@
+version: 1
+identity:
+  iso2: IN
+  iso3: IND
+  name_en: India
+  name_cn: 印度
+  currency: INR
+  timezones: [Asia/Kolkata]
+languages:
+  core: [en, hi]
+  exploratory: [ta, te, bn, mr]
+  migration_corridor: []
+geography:
+  country_anchors: [India, भारत, भारतीय, INR, rupee]
+  allow_unknown_admin1: true
+  admin1:
+    - {code: IN-KA, name_en: Karnataka, name_local: Karnataka, anchors: [Karnataka, Bengaluru, Bangalore]}
+    - {code: IN-MH, name_en: Maharashtra, name_local: Maharashtra, anchors: [Maharashtra, Mumbai, Pune]}
+    - {code: IN-DL, name_en: Delhi, name_local: Delhi, anchors: [Delhi, New Delhi, NCR]}
+    - {code: IN-TN, name_en: Tamil Nadu, name_local: Tamil Nadu, anchors: [Tamil Nadu, Chennai]}
+    - {code: IN-TG, name_en: Telangana, name_local: Telangana, anchors: [Telangana, Hyderabad]}
+audiences:
+  mainstream_roles: [job_seekers, office_workers, sales_marketing, operations_admin_hr, freelancers_creators, small_business_owners]
+  advanced_roles: [no_code_automation_users, business_ai_power_users]
+  technical_supplement: [developers, technical_founders]
+task_families:
+  - {id: career_jobs, terms: {en: [job search, resume, interview, portfolio], hi: [नौकरी खोज, रिज्यूमे, इंटरव्यू, पोर्टफोलियो]}}
+  - {id: office_productivity, terms: {en: [email, presentation, spreadsheet, documents, research], hi: [ईमेल, प्रेजेंटेशन, स्प्रेडशीट, दस्तावेज़]}}
+  - {id: sales_marketing, terms: {en: [sales, marketing, content, lead generation], hi: [बिक्री, मार्केटिंग, कंटेंट, लीड जनरेशन]}}
+  - {id: operations_admin, terms: {en: [operations, administration, HR, reporting], hi: [ऑपरेशन, प्रशासन, एचआर, रिपोर्टिंग]}}
+  - {id: small_business, terms: {en: [MSME, small business, freelancer, customer service], hi: [छोटा व्यवसाय, फ्रीलांसर, ग्राहक सेवा]}}
+products:
+  direct: [Claude Cowork, ChatGPT agent, Manus, Genspark, Perplexity Comet, Work Buddy]
+  adjacent: [Microsoft 365 Copilot, Google Workspace Gemini, Notion AI, Zapier, Make]
+channels:
+  - {name: Grapevine public communities, family: local_professional_social, status: Candidate, scope_default: country_candidate, candidate_streams: [B, C], access_mode: public_manual_partial, audience_bias: tech_and_corporate_professionals, url: "https://www.grapevine.in/", seed_reason: "India professional discussion candidate with tech/corporate bias; public accessibility must be piloted."}
+  - {name: MouthShut, family: local_review_platform, status: Candidate, scope_default: country_candidate, candidate_streams: [A], access_mode: public_manual, audience_bias: incentivized_and_self_selected_reviews, url: "https://www.mouthshut.com/", seed_reason: "India review platform candidate; target product coverage and authenticity caveats require pilot."}
+  - {name: Indian Reddit and Quora communities, family: forum_qa, status: Candidate, scope_default: country_candidate, candidate_streams: [A, B], access_mode: public_manual_conditional, audience_bias: english_speaking_digital_users, url: "https://www.reddit.com/", seed_reason: "Candidate for career, freelance, SME and product workflows with explicit India evidence."}
+  - {name: YouTube India, family: video_social, status: Candidate, scope_default: country_candidate, candidate_streams: [A, B, C], access_mode: public_manual_or_optional_api, audience_bias: creator_and_search_ranking, url: "https://www.youtube.com/", seed_reason: "Candidate for English/Hindi tutorials, job outcomes and creator funnels."}
+  - {name: LinkedIn Instagram and short video, family: professional_creator_social, status: Candidate, scope_default: country_candidate, candidate_streams: [B, C], access_mode: public_manual_partial, audience_bias: professional_and_creator_self_presentation, url: "https://www.linkedin.com/", seed_reason: "Candidate for professional workflows and high-volume creator content."}
+  - {name: Public freelancer and MSME communities, family: ecosystem_directory, status: Candidate, scope_default: recruitment_only, candidate_streams: [B, C], access_mode: public_manual_or_consent, audience_bias: community_members_and_service_sellers, url: "https://msme.gov.in/", seed_reason: "Discovery and recruitment candidate; private groups require consent."}
+  - {name: GitHub, family: technical_community, status: Candidate, scope_default: global_technical, candidate_streams: [A, B], access_mode: public_api_or_manual, audience_bias: Developer, url: "https://github.com/", seed_reason: "Technical supplement only; do not let developer volume dominate India conclusions."}
+access:
+  anonymous_public_path: [search_engine_discovery, public_page_manual_review, public_metrics_capture]
+  auth_optional: [YouTube Data API, Reddit Data API, platform login]
+  consent_required: [private WhatsApp, Telegram, Slack, Discord or company groups]
+  prohibited: [silent scraping of private groups, bypassing login or rate limits]
+research: {window_start: 2025-09-01, window_end: 2026-09-30, pilot_results_per_channel: 20, saturation_batches: 2, review_sample_rate: 0.10, required_mainstream_roles: 3, required_task_families: 4, required_source_families: 2}
+regional_mappings:
+  regions: [South Asia]
+  language_zones: [English-speaking India web, Hindi-speaking web, Indian-language web]
+  migration_corridors: [India-to-GCC, India-to-Singapore, India-to-UK, India-to-US]

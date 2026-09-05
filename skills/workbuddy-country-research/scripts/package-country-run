@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+"""Validate and create an immutable handoff ZIP for one country run."""
+
+import argparse
+import json
+import sys
+from pathlib import Path
+
+from prepare_workspace import ensure_runtime, resolve_workspace
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Package one WorkBuddy country data run.")
+    parser.add_argument("country")
+    parser.add_argument("--run-id", required=True)
+    parser.add_argument("--workspace")
+    parser.add_argument("--output-dir")
+    args = parser.parse_args()
+    workspace = resolve_workspace(args.workspace)
+    output_dir = Path(args.output_dir) if args.output_dir else workspace / "research" / "packages"
+    if not output_dir.is_absolute():
+        output_dir = workspace / output_dir
+    try:
+        runtime, _ = ensure_runtime(workspace)
+        sys.path.insert(0, str(runtime))
+        from country_runner.data_package import package_country_run
+        from country_runner.manifest import ManifestError, resolve_run_dir
+
+        run_dir = resolve_run_dir(workspace / "research" / "runs", args.country, args.run_id)
+        result = package_country_run(
+            run_dir, runtime / "config", runtime / "templates", output_dir
+        )
+    except (ManifestError, OSError, RuntimeError, ValueError) as error:
+        print(f"ERROR: {error}", file=sys.stderr)
+        return 2
+    print(json.dumps(result, ensure_ascii=False))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

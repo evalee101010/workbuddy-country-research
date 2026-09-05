@@ -93,6 +93,41 @@ class ManifestTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertTrue((Path(temp) / "AE" / "cli-demo" / "00-run-manifest.yml").exists())
 
+    def test_init_accepts_run_specific_research_window(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            run_dir = initialize_run(
+                country_code="AE",
+                run_id="window-demo",
+                runs_root=Path(temp),
+                config_root=RUNNER_ROOT / "config",
+                templates_root=RUNNER_ROOT / "templates",
+                researcher="Researcher",
+                window_start="2026-01-01",
+                window_end="2026-08-31",
+            )
+            manifest = load_manifest(run_dir)
+            self.assertEqual(
+                manifest["research_window"], {"start": "2026-01-01", "end": "2026-08-31"}
+            )
+            context = (run_dir / "01-country-context.md").read_text(encoding="utf-8")
+            self.assertIn("2026-01-01", context)
+            self.assertIn("2026-08-31", context)
+
+    def test_init_rejects_invalid_research_window(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            runs_root = Path(temp)
+            with self.assertRaises(ManifestError):
+                initialize_run(
+                    country_code="AE",
+                    run_id="bad-window",
+                    runs_root=runs_root,
+                    config_root=RUNNER_ROOT / "config",
+                    templates_root=RUNNER_ROOT / "templates",
+                    window_start="2026-09-01",
+                    window_end="2026-08-31",
+                )
+            self.assertFalse((runs_root / "AE" / "bad-window").exists())
+
 
 if __name__ == "__main__":
     unittest.main()

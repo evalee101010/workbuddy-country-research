@@ -1,0 +1,13 @@
+version: 1
+run_id: ""
+country_iso2: ""
+generated_at: ""
+streams:
+  A: {core: [], supplement: [], documented_gap: ""}
+  B: {core: [], supplement: [], documented_gap: ""}
+  C: {core: [], supplement: [], documented_gap: ""}
+rejected_sources: []
+approval_status: pending
+approved_by: ""
+approved_at: ""
+approval_note: ""
